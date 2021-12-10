@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" parent="." instance=ExtResource( 1 )]
+columns = 5
+
+[node name="Button" type="Button" parent="."]
+margin_left = 152.0
+margin_top = 138.0
+margin_right = 531.0
+margin_bottom = 242.0
+custom_fonts/font = SubResource( 1 )
+text = "check solution"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GeneratePuzzle" type="Button" parent="."]
+margin_left = 151.481
+margin_top = 32.1189
+margin_right = 530.481
+margin_bottom = 125.119
+custom_fonts/font = SubResource( 1 )
+text = "generate puzzle"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 226.957
+margin_top = 256.762
+margin_right = 448.957
+margin_bottom = 325.762
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Not solved"
+align = 1
+valign = 1
