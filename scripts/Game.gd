@@ -6,16 +6,16 @@ onready var grid:Grid = get_node("Grid")
 func _ready():
 	_generate_puzzle()
 	randomize()
-	$Button.connect("pressed", self, "_check_solution")
-	$GeneratePuzzle.connect("pressed", self, "_generate_puzzle")
+	$DEBUG_TBD/Button.connect("pressed", self, "_check_solution")
+	$DEBUG_TBD/GeneratePuzzle.connect("pressed", self, "_generate_puzzle")
 
 
 func _check_solution() -> void:
 	var check_solution = CheckSolution.new()
 	if check_solution.check_solution(grid):
-		$Label.text = "rjeseno je miliiii"
+		$DEBUG_TBD/Label.text = "rjeseno je miliiii"
 	else:
-		$Label.text = "Nije rjeseno kretenu"
+		$DEBUG_TBD/Label.text = "Nije rjeseno kretenu"
 
 
 func _generate_puzzle() -> void:

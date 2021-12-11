@@ -24,8 +24,8 @@ rows = 5
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
 columns = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -34,189 +34,189 @@ __meta__ = {
 [node name="GridRect" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
-margin_bottom = 102.0
+margin_right = 125.0
+margin_bottom = 98.0
 
 [node name="GridRect2" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 129.0
-margin_right = 258.0
-margin_bottom = 102.0
+margin_left = 130.0
+margin_right = 255.0
+margin_bottom = 98.0
 
 [node name="GridRect3" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 258.0
-margin_right = 387.0
-margin_bottom = 102.0
+margin_left = 260.0
+margin_right = 385.0
+margin_bottom = 98.0
 
 [node name="GridRect4" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
-margin_right = 516.0
-margin_bottom = 102.0
+margin_left = 390.0
+margin_right = 515.0
+margin_bottom = 98.0
 
 [node name="GridRect5" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 516.0
+margin_left = 520.0
 margin_right = 645.0
-margin_bottom = 102.0
+margin_bottom = 98.0
 
 [node name="GridRect6" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 102.0
-margin_right = 129.0
-margin_bottom = 204.0
+margin_top = 103.0
+margin_right = 125.0
+margin_bottom = 201.0
 
 [node name="GridRect7" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 129.0
-margin_top = 102.0
-margin_right = 258.0
-margin_bottom = 204.0
+margin_left = 130.0
+margin_top = 103.0
+margin_right = 255.0
+margin_bottom = 201.0
 
 [node name="GridRect8" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 258.0
-margin_top = 102.0
-margin_right = 387.0
-margin_bottom = 204.0
+margin_left = 260.0
+margin_top = 103.0
+margin_right = 385.0
+margin_bottom = 201.0
 
 [node name="GridRect9" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
-margin_top = 102.0
-margin_right = 516.0
-margin_bottom = 204.0
+margin_left = 390.0
+margin_top = 103.0
+margin_right = 515.0
+margin_bottom = 201.0
 
 [node name="GridRect10" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 516.0
-margin_top = 102.0
+margin_left = 520.0
+margin_top = 103.0
 margin_right = 645.0
-margin_bottom = 204.0
+margin_bottom = 201.0
 
 [node name="GridRect11" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 204.0
-margin_right = 129.0
-margin_bottom = 306.0
+margin_top = 206.0
+margin_right = 125.0
+margin_bottom = 304.0
 
 [node name="GridRect12" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 129.0
-margin_top = 204.0
-margin_right = 258.0
-margin_bottom = 306.0
+margin_left = 130.0
+margin_top = 206.0
+margin_right = 255.0
+margin_bottom = 304.0
 
 [node name="GridRect13" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 258.0
-margin_top = 204.0
-margin_right = 387.0
-margin_bottom = 306.0
+margin_left = 260.0
+margin_top = 206.0
+margin_right = 385.0
+margin_bottom = 304.0
 
 [node name="GridRect14" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
-margin_top = 204.0
-margin_right = 516.0
-margin_bottom = 306.0
+margin_left = 390.0
+margin_top = 206.0
+margin_right = 515.0
+margin_bottom = 304.0
 
 [node name="GridRect15" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 516.0
-margin_top = 204.0
+margin_left = 520.0
+margin_top = 206.0
 margin_right = 645.0
-margin_bottom = 306.0
+margin_bottom = 304.0
 
 [node name="GridRect16" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 306.0
-margin_right = 129.0
-margin_bottom = 408.0
+margin_top = 309.0
+margin_right = 125.0
+margin_bottom = 407.0
 
 [node name="GridRect17" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 129.0
-margin_top = 306.0
-margin_right = 258.0
-margin_bottom = 408.0
+margin_left = 130.0
+margin_top = 309.0
+margin_right = 255.0
+margin_bottom = 407.0
 
 [node name="GridRect18" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 258.0
-margin_top = 306.0
-margin_right = 387.0
-margin_bottom = 408.0
+margin_left = 260.0
+margin_top = 309.0
+margin_right = 385.0
+margin_bottom = 407.0
 
 [node name="GridRect19" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
-margin_top = 306.0
-margin_right = 516.0
-margin_bottom = 408.0
+margin_left = 390.0
+margin_top = 309.0
+margin_right = 515.0
+margin_bottom = 407.0
 
 [node name="MoveableGridRect" parent="GridContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 516.0
-margin_top = 306.0
+margin_left = 520.0
+margin_top = 309.0
 margin_right = 645.0
-margin_bottom = 408.0
+margin_bottom = 407.0
 
 [node name="GridRect21" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 408.0
-margin_right = 129.0
+margin_top = 412.0
+margin_right = 125.0
 margin_bottom = 510.0
 
 [node name="GridRect22" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 129.0
-margin_top = 408.0
-margin_right = 258.0
+margin_left = 130.0
+margin_top = 412.0
+margin_right = 255.0
 margin_bottom = 510.0
 
 [node name="GridRect23" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 258.0
-margin_top = 408.0
-margin_right = 387.0
+margin_left = 260.0
+margin_top = 412.0
+margin_right = 385.0
 margin_bottom = 510.0
 
 [node name="GridRect24" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 387.0
-margin_top = 408.0
-margin_right = 516.0
+margin_left = 390.0
+margin_top = 412.0
+margin_right = 515.0
 margin_bottom = 510.0
 
 [node name="GridRect25" parent="GridContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 516.0
-margin_top = 408.0
+margin_left = 520.0
+margin_top = 412.0
 margin_right = 645.0
 margin_bottom = 510.0

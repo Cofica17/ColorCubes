@@ -3,12 +3,12 @@ extends Node
 signal switch_grid_rects(moveable_grid_rect, colored_grid_rect)
 signal cancel_switch_grid_rects()
 
-var white:Color = "#ffffff"
+var white:Color = "#ccffffff"
 var black:Color = "#000000"
-var yellow:Color = "#dfff00"
-var blue:Color = "#001baf"
-var green:Color = "#00c428"
-var red:Color = "#ff0000"
+var yellow:Color = "#b32e263d" #dark blue almost
+var blue:Color = "#b3ffe3b5" # light yellow
+var green:Color = "#b3824254" # reddish
+var red:Color = "#b3d67a66" # shit color
 
 var colors := {
 	0 : red,
