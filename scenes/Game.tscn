@@ -44,26 +44,12 @@ __meta__ = {
 }
 
 [node name="Grid" parent="." instance=ExtResource( 1 )]
-anchor_top = 0.33
-anchor_bottom = 0.75
-columns = 5
+anchor_top = 0.35
+anchor_bottom = 0.85
+columns = 10
+rows = 10
 
 [node name="DEBUG_TBD" type="Node2D" parent="."]
-
-[node name="Label" type="Label" parent="DEBUG_TBD"]
-visible = false
-margin_left = 226.957
-margin_top = 256.762
-margin_right = 448.957
-margin_bottom = 325.762
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Not solved"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GeneratePuzzle" type="Button" parent="DEBUG_TBD"]
 margin_left = 34.745
@@ -77,21 +63,32 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="DEBUG_TBD"]
-margin_left = 154.245
-margin_top = 223.307
-margin_right = 533.245
-margin_bottom = 314.307
+margin_left = 28.1708
+margin_top = 189.579
+margin_right = 407.171
+margin_bottom = 280.579
 custom_fonts/font = SubResource( 1 )
 text = "add special rects"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button2" type="Button" parent="DEBUG_TBD"]
+margin_left = 429.838
+margin_top = 211.919
+margin_right = 717.838
+margin_bottom = 277.919
+custom_fonts/font = SubResource( 1 )
+text = "one touch move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="OptionButton" type="OptionButton" parent="DEBUG_TBD"]
-margin_left = 259.869
-margin_top = 337.592
-margin_right = 312.869
-margin_bottom = 389.592
+margin_left = 280.777
+margin_top = 303.864
+margin_right = 333.777
+margin_bottom = 355.864
 custom_fonts/font = SubResource( 1 )
 text = "1"
 items = [ "1", null, false, 0, null, "2", null, false, 1, null ]
@@ -101,10 +98,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="DEBUG_TBD"]
-margin_left = 24.5844
-margin_top = 324.977
-margin_right = 244.584
-margin_bottom = 408.977
+margin_left = 24.0127
+margin_top = 282.818
+margin_right = 249.013
+margin_bottom = 408.818
 custom_fonts/font = SubResource( 2 )
 text = "Number of different connections:"
 autowrap = true
@@ -113,10 +110,10 @@ __meta__ = {
 }
 
 [node name="OptionButton2" type="OptionButton" parent="DEBUG_TBD"]
-margin_left = 594.467
-margin_top = 336.257
-margin_right = 647.467
-margin_bottom = 388.257
+margin_left = 617.895
+margin_top = 302.529
+margin_right = 670.895
+margin_bottom = 354.529
 custom_fonts/font = SubResource( 1 )
 text = "2"
 items = [ "2", null, false, 1, null, "3", null, false, 2, null, "4", null, false, 3, null ]
@@ -125,11 +122,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OptionButton3" type="OptionButton" parent="DEBUG_TBD"]
+margin_left = 260.952
+margin_top = 125.18
+margin_right = 313.952
+margin_bottom = 177.18
+custom_fonts/font = SubResource( 1 )
+text = "0"
+items = [ "1", null, false, 2, null, "2", null, false, 3, null, "3", null, false, 3, null, "4", null, false, 4, null, "5", null, false, 5, null, "6", null, false, 6, null, "7", null, false, 7, null, "8", null, false, 8, null, "9", null, false, 9, null, "10", null, false, 10, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label3" type="Label" parent="DEBUG_TBD"]
-margin_left = 340.941
-margin_top = 328.981
-margin_right = 560.941
-margin_bottom = 412.981
+margin_left = 364.369
+margin_top = 295.253
+margin_right = 584.369
+margin_bottom = 379.253
 custom_fonts/font = SubResource( 2 )
 text = "Number of same symbol:"
 autowrap = true
@@ -138,10 +148,10 @@ __meta__ = {
 }
 
 [node name="21" type="Label" parent="DEBUG_TBD"]
-margin_left = 407.919
-margin_top = 1221.97
-margin_right = 640.919
-margin_bottom = 1268.97
+margin_left = 424.237
+margin_top = 127.939
+margin_right = 627.237
+margin_bottom = 175.939
 custom_fonts/font = SubResource( 2 )
 text = "Current seed: "
 __meta__ = {
@@ -149,12 +159,23 @@ __meta__ = {
 }
 
 [node name="CurrentSeed" type="Label" parent="DEBUG_TBD"]
-margin_left = 623.919
-margin_top = 1221.97
-margin_right = 856.919
-margin_bottom = 1268.97
+margin_left = 640.157
+margin_top = 127.913
+margin_right = 873.157
+margin_bottom = 174.913
 custom_fonts/font = SubResource( 2 )
 text = "123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="xbyx" type="Label" parent="DEBUG_TBD"]
+margin_left = 49.7416
+margin_top = 130.158
+margin_right = 282.742
+margin_bottom = 177.158
+custom_fonts/font = SubResource( 2 )
+text = "Board X by X:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,5 +192,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="DEBUG_TBD/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="item_selected" from="DEBUG_TBD/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="DEBUG_TBD/OptionButton2" to="." method="_on_OptionButton2_item_selected"]
+[connection signal="item_selected" from="DEBUG_TBD/OptionButton3" to="." method="_on_OptionButton3_item_selected"]

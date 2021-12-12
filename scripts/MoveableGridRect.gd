@@ -9,7 +9,10 @@ func _ready():
 
 
 func _on_clicked() -> void:
-	Global.initiate_switch_grid_rects(self)
+	if Global.one_touch_move:
+		return
+	
+	Global.initiate_switch_grid_rects()
 	set_color(Global.black)
 
 

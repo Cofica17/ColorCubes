@@ -1,4 +1,5 @@
 extends Control
+tool
 
 onready var grid:Grid = get_node("Grid")
 
@@ -27,7 +28,7 @@ func _add_connection_rects(num_of_different_connection_rects:int = num_of_dif_co
 		if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
 			num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
 	
-	var excluding = [_get_moveable_rect_id()]
+	var excluding = [grid.get_moveable_rect_id()]
 	var excluding_icons = []
 	for i in num_of_different_connection_rects:
 		var rnd_rect_icon = Utils.generate_random_int_excluding(0, Global.total_number_of_diff_connection_rects - 1, excluding_icons)
@@ -52,10 +53,11 @@ func _add_connection_rects(num_of_different_connection_rects:int = num_of_dif_co
 		excluding_icons.append(rnd_rect_icon)
 
 
-func _get_moveable_rect_id():
-	for c in grid.grid_container.get_children():
-		if c is MoveableGridRect:
-			return c.id
+var new_grid_columns
+var new_grid_rows
+func _on_OptionButton3_item_selected(index):
+	new_grid_columns = index + 1
+	new_grid_rows = index + 1
 
 
 func _generate_puzzle() -> void:
@@ -73,6 +75,10 @@ func _generate_puzzle() -> void:
 	added_connection_rects = false
 	
 	grid.clear_grid_container()
+	
+	if new_grid_columns and new_grid_rows:
+		grid.columns = new_grid_columns
+		grid.rows = new_grid_rows
 	
 	var GridRectScene = load("res://scenes/ColoredGridRect.tscn")
 	var MoveableGridRectScene = load("res://scenes/MoveableGridRect.tscn")
@@ -102,6 +108,8 @@ func _generate_puzzle() -> void:
 			if is_grid_rect:
 				var random_color_idx = Global.RNG.randi() % Global.current_theme.total_number_of_possible_colors
 				grid_rect.set_color(Global.current_theme.colors[random_color_idx])
+	
+	grid.call_deferred("adjust_board_size")
 
 
 func _on_OptionButton_item_selected(index):
@@ -110,3 +118,16 @@ func _on_OptionButton_item_selected(index):
 
 func _on_OptionButton2_item_selected(index):
 	num_of_p = index + 2
+
+var one_touch_text = "one touch move"
+var two_touch_text = "two touch move"
+func _on_Button2_pressed():
+	if $DEBUG_TBD/Button2.text == one_touch_text:
+		Global.one_touch_move = true
+		$DEBUG_TBD/Button2.text = two_touch_text
+	else:
+		Global.one_touch_move = false
+		$DEBUG_TBD/Button2.text = one_touch_text
+
+
+

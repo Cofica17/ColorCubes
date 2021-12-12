@@ -12,10 +12,26 @@ onready var grid_container:GridContainer = get_node("GridContainer")
 
 func _ready() -> void:
 	Global.connect("switch_grid_rects", self, "_on_switch_grid_rects")
+	Global.connect("puzzle_generated", self, "_adjust_board_size")
+
+
+func adjust_board_size() -> void:
+	if rect_size.y > rect_size.x:
+		rect_size.y = rect_size.x
+	elif rect_size.x > rect_size.y:
+		rect_size.x = rect_size.y
+
+
+func get_moveable_rect_id():
+	for c in grid_container.get_children():
+		if c is MoveableGridRect:
+			return c.id
 
 
 #TODO: refactor if needed
-func _on_switch_grid_rects(moveable_grid_rect:MoveableGridRect, colored_grid_rect:ColoredGridRect) -> void:
+func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
+	var moveable_grid_rect = grid_container.get_child(get_moveable_rect_id())
+	
 	var dir
 	
 	if moveable_grid_rect.id == colored_grid_rect.id + 1:
