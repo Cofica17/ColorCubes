@@ -1,5 +1,8 @@
 extends Node
 
+var RNG = RandomNumberGenerator.new()
+var current_seed
+
 signal switch_grid_rects(moveable_grid_rect, colored_grid_rect)
 signal cancel_switch_grid_rects()
 

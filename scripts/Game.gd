@@ -8,8 +8,12 @@ var num_of_p = 2
 
 func _ready():
 	Global.current_theme = BoardThemes.desert
+	Global.RNG.randomize()
+	var s = Global.RNG.randi() % 1000
+	Global.RNG.seed = s
+	Global.current_seed = s
 	_generate_puzzle()
-	randomize()
+	$DEBUG_TBD/CurrentSeed.text = str(s)
 	$DEBUG_TBD/Button.connect("pressed", self, "_add_connection_rects")
 	$DEBUG_TBD/GeneratePuzzle.connect("pressed", self, "_generate_puzzle")
 
@@ -55,6 +59,11 @@ func _get_moveable_rect_id():
 
 
 func _generate_puzzle() -> void:
+	var el_text = $DEBUG_TBD/LineEdit.text
+	if not el_text.empty():
+		var s = int(el_text)
+		Global.RNG.seed = s
+	
 	added_connection_rects = false
 	
 	grid.clear_grid_container()
@@ -64,7 +73,7 @@ func _generate_puzzle() -> void:
 	
 	var idx = 0
 	
-	var mgr_idx =  randi() % (grid.rows * grid.columns)
+	var mgr_idx =  Global.RNG.randi() % (grid.rows * grid.columns)
 	
 	for i in grid.rows:
 		for j in grid.columns:
@@ -85,7 +94,7 @@ func _generate_puzzle() -> void:
 			idx += 1
 			
 			if is_grid_rect:
-				var random_color_idx = randi() % Global.current_theme.total_number_of_possible_colors
+				var random_color_idx = Global.RNG.randi() % Global.current_theme.total_number_of_possible_colors
 				grid_rect.set_color(Global.current_theme.colors[random_color_idx])
 
 
