@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://assets/tex/desert_bg.png" type="Texture" id=4]
+[ext_resource path="res://assets/desert/tex/desert_bg.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
 font_data = ExtResource( 2 )
 
 [node name="Game" type="Control"]
@@ -40,9 +44,9 @@ anchor_top = 0.28
 columns = 5
 
 [node name="DEBUG_TBD" type="Node2D" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="DEBUG_TBD"]
+visible = false
 margin_left = 226.957
 margin_top = 256.762
 margin_right = 448.957
@@ -71,9 +75,62 @@ __meta__ = {
 margin_left = 152.0
 margin_top = 138.0
 margin_right = 531.0
-margin_bottom = 242.0
+margin_bottom = 229.0
 custom_fonts/font = SubResource( 1 )
-text = "check solution"
+text = "add special rects"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="OptionButton" type="OptionButton" parent="DEBUG_TBD"]
+margin_left = 257.624
+margin_top = 252.285
+margin_right = 310.624
+margin_bottom = 295.285
+custom_fonts/font = SubResource( 1 )
+text = "1"
+items = [ "1", null, false, 0, null, "2", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="DEBUG_TBD"]
+margin_left = 22.3394
+margin_top = 239.67
+margin_right = 242.339
+margin_bottom = 323.67
+custom_fonts/font = SubResource( 2 )
+text = "Number of different connections:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton2" type="OptionButton" parent="DEBUG_TBD"]
+margin_left = 592.222
+margin_top = 250.95
+margin_right = 645.222
+margin_bottom = 293.95
+custom_fonts/font = SubResource( 1 )
+text = "2"
+items = [ "2", null, false, 1, null, "3", null, false, 2, null, "4", null, false, 3, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="DEBUG_TBD"]
+margin_left = 338.696
+margin_top = 243.674
+margin_right = 558.696
+margin_bottom = 327.674
+custom_fonts/font = SubResource( 2 )
+text = "Number of same symbol:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="DEBUG_TBD/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="DEBUG_TBD/OptionButton2" to="." method="_on_OptionButton2_item_selected"]

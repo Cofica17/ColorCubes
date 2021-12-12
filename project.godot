@@ -51,6 +51,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
+BoardThemes="*res://BoardThemes.gd"
+Utils="*res://Utils.gd"
 
 [display]
 

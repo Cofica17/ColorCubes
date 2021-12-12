@@ -3,6 +3,15 @@ class_name ColoredGridRect
 
 onready var border = get_node("Panel")
 onready var inside_panel = get_node("InsidePanel")
+onready var texture:TextureRect = $TextureRect
+
+var is_connection_rect := false
+
+
+func set_texture(tex:Texture) -> void:
+	texture.texture = tex
+	texture.show()
+	is_connection_rect = true
 
 
 func set_color(v:Color) -> void:

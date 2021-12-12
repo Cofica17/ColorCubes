@@ -5,19 +5,9 @@ signal cancel_switch_grid_rects()
 
 var white:Color = "#ccffffff"
 var black:Color = "#000000"
-var yellow:Color = "#b32e263d" #dark blue almost
-var blue:Color = "#b3ffe3b5" # light yellow
-var green:Color = "#b3824254" # reddish
-var red:Color = "#b3d67a66" # shit color
 
-var colors := {
-	0 : red,
-	1 : yellow,
-	2 : blue,
-	3 : green,
-}
-
-var total_number_of_possible_colors := 4
+var current_theme : Dictionary
+var total_number_of_diff_connection_rects := 2
 
 var moveable_grid_rect
 var colored_grid_rect

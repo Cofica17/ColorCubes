@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/desert_bg.png-b0960eb33292b9b61bc92e4c85dcf70f.stex"
+path="res://.import/scorpion.png-e8c2c965c252c4e0cd241b640cb866e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tex/desert_bg.png"
-dest_files=[ "res://.import/desert_bg.png-b0960eb33292b9b61bc92e4c85dcf70f.stex" ]
+source_file="res://assets/desert/icons/scorpion.png"
+dest_files=[ "res://.import/scorpion.png-e8c2c965c252c4e0cd241b640cb866e3.stex" ]
 
 [params]
 

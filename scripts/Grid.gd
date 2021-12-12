@@ -5,6 +5,8 @@ tool
 export var columns:int = 0 setget set_columns
 export var rows:int = 0 setget set_rows
 
+var total_num_of_grid_rects := columns * rows
+
 onready var grid_container:GridContainer = get_node("GridContainer")
 
 
@@ -70,7 +72,9 @@ func set_columns(v) -> void:
 	
 	columns = v
 	$GridContainer.columns = columns
+	total_num_of_grid_rects = columns * rows
 
 
 func set_rows(v) -> void:
 	rows = v
+	total_num_of_grid_rects = columns * rows
