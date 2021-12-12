@@ -63,6 +63,12 @@ func _generate_puzzle() -> void:
 	if not el_text.empty():
 		var s = int(el_text)
 		Global.RNG.seed = s
+		$DEBUG_TBD/CurrentSeed.text = str(s)
+	else:
+		var s = Global.RNG.randi() % 1000
+		Global.RNG.seed = s
+		Global.current_seed = s
+		$DEBUG_TBD/CurrentSeed.text = str(s)
 	
 	added_connection_rects = false
 	

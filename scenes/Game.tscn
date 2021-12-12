@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
@@ -10,7 +10,11 @@ size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 21
+size = 27
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 23
 font_data = ExtResource( 2 )
 
 [node name="Game" type="Control"]
@@ -133,13 +137,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentSeed" type="Label" parent="DEBUG_TBD"]
-margin_left = 425.919
-margin_top = 1205.97
-margin_right = 658.919
-margin_bottom = 1252.97
+[node name="21" type="Label" parent="DEBUG_TBD"]
+margin_left = 407.919
+margin_top = 1221.97
+margin_right = 640.919
+margin_bottom = 1268.97
 custom_fonts/font = SubResource( 2 )
 text = "Current seed: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CurrentSeed" type="Label" parent="DEBUG_TBD"]
+margin_left = 623.919
+margin_top = 1221.97
+margin_right = 856.919
+margin_bottom = 1268.97
+custom_fonts/font = SubResource( 2 )
+text = "123"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -149,7 +164,7 @@ margin_left = 453.474
 margin_top = 38.1637
 margin_right = 655.474
 margin_bottom = 105.164
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 placeholder_text = "enter seed(int)"
 __meta__ = {
