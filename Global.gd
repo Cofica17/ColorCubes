@@ -17,7 +17,7 @@ var total_number_of_diff_connection_rects := 2
 var colored_grid_rect
 var switch_grid_rects_initiated:bool = false
 
-var one_touch_move = false
+var one_touch_move = true
 
 enum DIRECTION {
 	LEFT,

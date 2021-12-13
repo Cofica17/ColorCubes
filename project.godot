@@ -47,7 +47,7 @@ config/icon="res://icon.png"
 Global="*res://Global.gd"
 BoardThemes="*res://BoardThemes.gd"
 Utils="*res://Utils.gd"
-CheckSolution="*res://scripts/CheckSolution.gd"
+CheckSolution="*res://CheckSolution.gd"
 
 [display]
 

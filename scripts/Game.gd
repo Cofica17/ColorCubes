@@ -1,40 +1,25 @@
 extends Control
 tool
 
+var GridRectScene = load("res://scenes/ColoredGridRect.tscn")
+var MoveableGridRectScene = load("res://scenes/MoveableGridRect.tscn")
+
 onready var grid:Grid = get_node("Grid")
 
-var added_connection_rects := false
-var num_of_dif_con = 1
-var num_of_p = 2
 
 func _ready():
 	Global.current_theme = BoardThemes.desert
-	Global.RNG.randomize()
-	var s = Global.RNG.randi() % 1000
-	Global.RNG.seed = s
-	Global.current_seed = s
 	_generate_puzzle()
-	$DEBUG_TBD/CurrentSeed.text = str(s)
-	$DEBUG_TBD/Button.connect("pressed", self, "_add_connection_rects")
-	$DEBUG_TBD/GeneratePuzzle.connect("pressed", self, "_generate_puzzle")
 	Global.connect("grid_rect_switched", self, "_check_solution")
 
 
 func _check_solution() -> void:
-	if CheckSolution.is_grid_solved(grid):
-		$DEBUG_TBD/Button3.text = "solved"
-	else:
-		$DEBUG_TBD/Button3.text = "not solved"
+	pass #TBA
 
 
-func _add_connection_rects(num_of_different_connection_rects:int = num_of_dif_con, num_of_pairs:int= num_of_p) -> void:
-	if added_connection_rects:
-		return
-	else:
-		added_connection_rects = true
-
-		if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
-			num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
+func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
+	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
+		num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
 	
 	var excluding = [grid.get_moveable_rect_id()]
 	var excluding_icons = []
@@ -61,35 +46,8 @@ func _add_connection_rects(num_of_different_connection_rects:int = num_of_dif_co
 		excluding_icons.append(rnd_rect_icon)
 
 
-var new_grid_columns
-var new_grid_rows
-func _on_OptionButton3_item_selected(index):
-	new_grid_columns = index + 1
-	new_grid_rows = index + 1
-
-
 func _generate_puzzle() -> void:
-	var el_text = $DEBUG_TBD/LineEdit.text
-	if not el_text.empty():
-		var s = int(el_text)
-		Global.RNG.seed = s
-		$DEBUG_TBD/CurrentSeed.text = str(s)
-	else:
-		var s = Global.RNG.randi() % 1000
-		Global.RNG.seed = s
-		Global.current_seed = s
-		$DEBUG_TBD/CurrentSeed.text = str(s)
-	
-	added_connection_rects = false
-	
 	grid.clear_grid_container()
-	
-	if new_grid_columns and new_grid_rows:
-		grid.columns = new_grid_columns
-		grid.rows = new_grid_rows
-	
-	var GridRectScene = load("res://scenes/ColoredGridRect.tscn")
-	var MoveableGridRectScene = load("res://scenes/MoveableGridRect.tscn")
 	
 	var idx = 0
 	
@@ -118,21 +76,3 @@ func _generate_puzzle() -> void:
 				grid_rect.set_color(Global.current_theme.colors[random_color_idx])
 	
 	grid.call_deferred("adjust_board_size")
-
-
-func _on_OptionButton_item_selected(index):
-	num_of_dif_con = index + 1
-
-
-func _on_OptionButton2_item_selected(index):
-	num_of_p = index + 2
-
-var one_touch_text = "one touch move"
-var two_touch_text = "two touch move"
-func _on_Button2_pressed():
-	if $DEBUG_TBD/Button2.text == one_touch_text:
-		Global.one_touch_move = true
-		$DEBUG_TBD/Button2.text = two_touch_text
-	else:
-		Global.one_touch_move = false
-		$DEBUG_TBD/Button2.text = one_touch_text
