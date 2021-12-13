@@ -46,8 +46,8 @@ __meta__ = {
 [node name="Grid" parent="." instance=ExtResource( 1 )]
 anchor_top = 0.35
 anchor_bottom = 0.85
-columns = 10
-rows = 10
+columns = 5
+rows = 5
 
 [node name="DEBUG_TBD" type="Node2D" parent="."]
 
@@ -128,7 +128,7 @@ margin_top = 125.18
 margin_right = 313.952
 margin_bottom = 177.18
 custom_fonts/font = SubResource( 1 )
-text = "0"
+text = "1"
 items = [ "1", null, false, 2, null, "2", null, false, 3, null, "3", null, false, 3, null, "4", null, false, 4, null, "5", null, false, 5, null, "6", null, false, 6, null, "7", null, false, 7, null, "8", null, false, 8, null, "9", null, false, 9, null, "10", null, false, 10, null ]
 selected = 0
 __meta__ = {
@@ -188,6 +188,19 @@ margin_bottom = 105.164
 custom_fonts/font = SubResource( 3 )
 align = 1
 placeholder_text = "enter seed(int)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="DEBUG_TBD"]
+visible = false
+margin_left = 343.532
+margin_top = 294.43
+margin_right = 645.532
+margin_bottom = 349.43
+rect_scale = Vector2( 0.843359, 1.40213 )
+custom_fonts/font = SubResource( 1 )
+text = "Solution check"
 __meta__ = {
 "_edit_use_anchors_": false
 }

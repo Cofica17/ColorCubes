@@ -64,6 +64,8 @@ func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
 		grid_container.move_child(other_grid_rect, moveable_grid_rect.id)
 	
 	_update_ids_for_grid_rects()
+	
+	Global.emit_signal("grid_rect_switched")
 
 
 func _update_ids_for_grid_rects() -> void:

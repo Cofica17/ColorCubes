@@ -6,6 +6,7 @@ var current_seed
 signal switch_grid_rects(colored_grid_rect)
 signal cancel_switch_grid_rects()
 signal puzzle_generated()
+signal grid_rect_switched()
 
 var white:Color = "#ffffff"
 var black:Color = "#000000"

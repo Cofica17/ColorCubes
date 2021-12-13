@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "CheckSolution",
-"language": "GDScript",
-"path": "res://scripts/CheckSolution.gd"
-}, {
 "base": "GridRect",
 "class": "ColoredGridRect",
 "language": "GDScript",
@@ -35,7 +30,6 @@ _global_script_classes=[ {
 "path": "res://scripts/MoveableGridRect.gd"
 } ]
 _global_script_class_icons={
-"CheckSolution": "",
 "ColoredGridRect": "",
 "Grid": "",
 "GridRect": "",
@@ -53,6 +47,7 @@ config/icon="res://icon.png"
 Global="*res://Global.gd"
 BoardThemes="*res://BoardThemes.gd"
 Utils="*res://Utils.gd"
+CheckSolution="*res://scripts/CheckSolution.gd"
 
 [display]
 

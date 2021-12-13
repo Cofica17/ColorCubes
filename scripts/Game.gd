@@ -17,6 +17,14 @@ func _ready():
 	$DEBUG_TBD/CurrentSeed.text = str(s)
 	$DEBUG_TBD/Button.connect("pressed", self, "_add_connection_rects")
 	$DEBUG_TBD/GeneratePuzzle.connect("pressed", self, "_generate_puzzle")
+	Global.connect("grid_rect_switched", self, "_check_solution")
+
+
+func _check_solution() -> void:
+	if CheckSolution.is_grid_solved(grid):
+		$DEBUG_TBD/Button3.text = "solved"
+	else:
+		$DEBUG_TBD/Button3.text = "not solved"
 
 
 func _add_connection_rects(num_of_different_connection_rects:int = num_of_dif_con, num_of_pairs:int= num_of_p) -> void:
@@ -128,6 +136,3 @@ func _on_Button2_pressed():
 	else:
 		Global.one_touch_move = false
 		$DEBUG_TBD/Button2.text = one_touch_text
-
-
-

@@ -1,7 +1,6 @@
 extends Node
-class_name CheckSolution
 
-func check_solution(grid:Grid) -> bool:
+func is_grid_solved(grid:Grid) -> bool:
 	if not _all_colors_connected(grid):
 		return false
 	
