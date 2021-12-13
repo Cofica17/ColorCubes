@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://assets/desert/tex/desert_bg.png" type="Texture" id=4]
+[ext_resource path="res://level_generator/LevelGenerator.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -16,6 +22,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+color = Color( 0.909804, 0.741176, 0.458824, 0.701961 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,7 +38,22 @@ __meta__ = {
 }
 
 [node name="Grid" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_top = 0.25
 anchor_bottom = 0.75
-columns = 4
-rows = 4
+columns = 3
+rows = 3
+
+[node name="LevelGenerator" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="LevelGenerator"]
+margin_left = 179.755
+margin_top = 79.95
+margin_right = 505.755
+margin_bottom = 164.95
+custom_fonts/font = SubResource( 1 )
+text = "Generate"
+__meta__ = {
+"_edit_use_anchors_": false
+}

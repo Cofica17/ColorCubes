@@ -72,7 +72,7 @@ func _generate_puzzle() -> void:
 			idx += 1
 			
 			if is_grid_rect:
-				var random_color_idx = Global.RNG.randi() % Global.current_theme.total_number_of_possible_colors
+				var random_color_idx = Global.RNG.randi() % Global.total_number_of_possible_colors
 				grid_rect.set_color(Global.current_theme.colors[random_color_idx])
 	
 	grid.call_deferred("adjust_board_size")
