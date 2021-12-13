@@ -42,4 +42,3 @@ func generate_classic_puzzle(grid:Grid, puzzle:Dictionary) -> void:
 			column = 0
 		else:
 			column += 1
-			print(column)

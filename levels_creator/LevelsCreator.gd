@@ -61,8 +61,7 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 						grid_rect.color = -1
 					
 					result[level]["grid_rects"].append(grid_rect)
-			print(all_chosen_colors.size())
-			print(all_chosen_colors)
+			
 			result[level]["grid_rects"] = check_colors_and_adjust(configuration.min_amount_same_color_cubes, result[level]["grid_rects"])
 			
 			level += 1
