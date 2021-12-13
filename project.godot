@@ -56,6 +56,7 @@ Utils="*res://singletons/Utils.gd"
 CheckSolution="*res://singletons/CheckSolution.gd"
 Levels="*res://singletons/Levels.gd"
 LevelsCreatorConfiguration="*res://levels_creator/LevelsCreatorConfiguration.gd"
+LevelGenerator="*res://level_generator/LevelGenerator.gd"
 
 [display]
 

@@ -6,10 +6,10 @@ var desert := {
 		1 : "#b3ffe3b5",
 		2 : "#b3824254",
 		3 : "#b3d67a66",
-		4 : "b3ad5e5e",
+		4 : "b3e8bd75",
 		5 : "b3c2a3ad",
 		6 : "b3c9a396",
-		7 : "b3e8bd75"
+		7 : "b3ad5e5e"
 	},
 	"connection_rects_icons" : {
 		0 : load("res://assets/desert/icons/cacstus.png"),

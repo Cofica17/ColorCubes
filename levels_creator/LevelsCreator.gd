@@ -1,10 +1,11 @@
 extends Node2D
 
+signal levels_generated
+
 var root_folder = "user://"
 
 func _ready():
 	randomize()
-	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_1)
 
 
 func generate_levels(pack, level) -> void:
@@ -24,44 +25,55 @@ func generate_levels(pack, level) -> void:
 func generate_classic_levels(config_array:Array) -> Dictionary:
 	var result := {}
 	
-	var level = 1
+	var level:int = 1
 	
 	for configuration in config_array:
-		var board_size = configuration.board_size * configuration.board_size
+		var board_size = configuration.board_size
 		var colors = configuration.colors
 		var levels = configuration.levels
 		
 		var mgr_idx =  randi() % board_size
 		
 		for i in levels:
-			result[level] = {}
+			result[level] = {
+				"board_size" : board_size,
+				"grid_rects" : []
+			}
 			
-			for j in board_size:
-				var random_color_idx = randi() % colors
-				
-				var grid_rect := {
-					"color" : random_color_idx,
-					"is_control" : false
-				}
-				
-				if mgr_idx == j:
-					grid_rect.is_control = true
-					grid_rect.color = -1
-				
-				result[level][j] = grid_rect
+			var all_chosen_colors:Array = []
 			
-			result[level] = check_colors_and_adjust(configuration.min_amount_same_color_cubes, result[level])
+			while all_chosen_colors.size() != colors:
+				result[level]["grid_rects"] = []
+				
+				for j in board_size:
+					var random_color_idx = randi() % colors
+					
+					if not all_chosen_colors.has(random_color_idx) and mgr_idx != j:
+						all_chosen_colors.append(random_color_idx)
+					
+					var grid_rect := {
+						"color" : random_color_idx,
+						"is_control" : false
+					}
+					
+					if mgr_idx == j:
+						grid_rect.is_control = true
+						grid_rect.color = -1
+					
+					result[level]["grid_rects"].append(grid_rect)
+			print(all_chosen_colors.size())
+			print(all_chosen_colors)
+			result[level]["grid_rects"] = check_colors_and_adjust(configuration.min_amount_same_color_cubes, result[level]["grid_rects"])
 			
 			level += 1
 	
 	return result
 
 
-func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Dictionary) -> Dictionary:
+func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Array) -> Array:
 	var color_counter = {}
 	
-	for i in level_details:
-		var grid_rect = level_details[i]
+	for grid_rect in level_details:
 		
 		if grid_rect.is_control:
 			continue
@@ -82,8 +94,7 @@ func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Dict
 				
 				var color_with_max_sum = _get_color_with_max_sum(color_counter.duplicate())
 
-				for j in level_details:
-					var grid_rect = level_details[j]
+				for grid_rect in level_details:
 					
 					if grid_rect.is_control:
 						continue
@@ -108,3 +119,8 @@ func _get_color_with_max_sum(color_counter) -> int:
 			m = color_counter[c]
 			idx = c
 	return idx
+
+
+func _on_Button_pressed():
+	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_1)
+	emit_signal("levels_generated")
