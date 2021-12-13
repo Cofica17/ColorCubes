@@ -46,8 +46,8 @@ __meta__ = {
 [node name="Grid" parent="." instance=ExtResource( 1 )]
 anchor_top = 0.35
 anchor_bottom = 0.85
-columns = 5
-rows = 5
+columns = 4
+rows = 4
 
 [node name="DEBUG_TBD" type="Node2D" parent="."]
 
