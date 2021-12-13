@@ -9,7 +9,7 @@ onready var grid:Grid = get_node("Grid")
 
 func _ready():
 	Global.current_theme = BoardThemes.desert
-	_generate_puzzle()
+	#_generate_puzzle()
 	Global.connect("grid_rect_switched", self, "_check_solution")
 
 
@@ -46,7 +46,7 @@ func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:i
 		excluding_icons.append(rnd_rect_icon)
 
 
-func _generate_puzzle() -> void:
+func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()
 	
 	var idx = 0

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Classic_DF1",
 "language": "GDScript",
-"path": "res://level_generator/configurations/classic/Classic_DF1.gd"
+"path": "res://levels_creator/configurations/classic/Classic_DF1.gd"
 }, {
 "base": "GridRect",
 "class": "ColoredGridRect",
@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Color Cube"
-run/main_scene="res://level_generator/LevelGenerator.tscn"
+run/main_scene="res://levels_creator/LevelsCreator.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -55,7 +55,7 @@ BoardThemes="*res://board_themes/BoardThemes.gd"
 Utils="*res://singletons/Utils.gd"
 CheckSolution="*res://singletons/CheckSolution.gd"
 Levels="*res://singletons/Levels.gd"
-LevelGeneratorConfiguration="*res://level_generator/LevelGeneratorConfiguration.gd"
+LevelsCreatorConfiguration="*res://levels_creator/LevelsCreatorConfiguration.gd"
 
 [display]
 

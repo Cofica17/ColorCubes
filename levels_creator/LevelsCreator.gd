@@ -8,7 +8,7 @@ func _ready():
 
 
 func generate_levels(pack, level) -> void:
-	var configuration = LevelGeneratorConfiguration.get_configuration(pack, level)
+	var configuration = LevelsCreatorConfiguration.get_configuration(pack, level)
 	var file_name = Levels.get_file_name(pack, level)
 	
 	var generated_levels = generate_classic_levels(configuration)
