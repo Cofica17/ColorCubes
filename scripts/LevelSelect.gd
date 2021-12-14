@@ -1,5 +1,7 @@
 extends Control
 
+signal close_level_select
+
 onready var grid = $ScrollContainer/GridContainer
 
 
@@ -10,9 +12,6 @@ func _ready():
 func _on_new_level_chosen(new_level) -> void:
 	_set_solved_and_unsolved_colors()
 	grid.get_child(new_level - 1).set_color(Puzzle.chosen_color)
-	
-	if visible:
-		visible = !visible
 
 
 func _set_solved_and_unsolved_colors() -> void:

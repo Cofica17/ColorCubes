@@ -8,6 +8,7 @@ onready var puzzle_level:Label = $PuzzleLevel
 onready var play:Button = $Play
 onready var grid_btn:Button = $Grid/GridButton
 onready var level_select:Control = $LevelSelect
+onready var exit_level_select:Button = $ExitLevelSelect
 
 var content:Dictionary
 var current_level = 1 
@@ -20,6 +21,7 @@ func _ready():
 	play.connect("pressed", self, "_on_play_pressed")
 	grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
 	Global.connect("level_chosen", self, "_on_level_chosen")
+	exit_level_select.connect("pressed", self, "_exit_level_select")
 	
 	Global.current_theme = BoardThemes.classic
 	content = _read_classic_levels_file()
@@ -32,14 +34,21 @@ func _on_level_chosen(new_level:int) -> void:
 	current_level = new_level
 	_set_puzzle_level() 
 	_generate_puzzle(content[str(current_level)])
+	_exit_level_select()
 
 
 func fill_level_select() -> void:
 	level_select.fill_levels(max_levels)
 
 
+func _exit_level_select() -> void:
+	level_select.hide()
+	exit_level_select.hide()
+
+
 func _on_grid_btn_pressed() -> void:
 	level_select.show()
+	exit_level_select.show()
 
 
 func _on_play_pressed() -> void:

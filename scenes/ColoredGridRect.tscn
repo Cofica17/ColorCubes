@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/themes/desert/icons/cacstus.png" type="Texture" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 0.8 )
+bg_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 border_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
