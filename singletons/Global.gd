@@ -3,6 +3,8 @@ extends Node
 var RNG = RandomNumberGenerator.new()
 var current_seed
 
+var level_select_scrolling = false
+
 signal switch_grid_rects(colored_grid_rect)
 signal cancel_switch_grid_rects()
 signal puzzle_generated()

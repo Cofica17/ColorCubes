@@ -11,6 +11,9 @@ func _ready():
 
 
 func _on_pressed() -> void:
+	if Global.level_select_scrolling:
+		return
+	
 	Global.emit_signal("level_chosen", level)
 
 

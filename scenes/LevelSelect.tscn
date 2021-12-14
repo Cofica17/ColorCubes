@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/Scrolling.gd" type="Script" id=2]
 [ext_resource path="res://scripts/LevelSelect.gd" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -48,6 +49,7 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 custom_styles/bg = SubResource( 3 )
 scroll_horizontal_enabled = false
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,3 +80,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="scroll_started" from="ScrollContainer" to="ScrollContainer" method="_on_ScrollContainer_scroll_started"]

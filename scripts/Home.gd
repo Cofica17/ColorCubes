@@ -90,9 +90,9 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 func _read_classic_levels_file() -> Dictionary:
 	var file = File.new()
 	file.open("user://classic_dfl_1.json", File.READ)
-	var content:Dictionary = JSON.parse(file.get_as_text()).result
+	var _content:Dictionary = JSON.parse(file.get_as_text()).result
 	file.close()
-	return content
+	return _content
 
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
