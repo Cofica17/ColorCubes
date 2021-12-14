@@ -17,6 +17,11 @@ var difficulty_level_names := {
 	2 : "Insane"
 }
 
+var pack_names := {
+	0 : "Classic",
+	1 : "Connection"
+}
+
 var file_names := {
 	PACKS.CLASSIC : {
 		DIFFICULTY.LEVEL_1 : "classic_dfl_1.json"

@@ -2,14 +2,54 @@ extends Control
 tool
 
 onready var grid:Grid = get_node("Grid")
+onready var pack:Label = $VBoxContainer/Pack
+onready var difficulty:Label = $VBoxContainer/Difficulty
+onready var level:Label = $VBoxContainer/Level
+onready var time_elapsed_lbl:Label = $VBoxContainer/TimeElapsed
+onready var restart:TextureButton = $Restart
+onready var home:TextureButton = $Home
 
-var content:Dictionary
-var current_level = 1 
-
+var time_elapsed = 0
 
 func _ready():
-	pass
 	#Global.connect("grid_rect_switched", self, "_check_solution")
+	_generate_puzzle(Puzzle.content)
+	pack.text = Levels.pack_names[Puzzle.pack] + " Pack"
+	difficulty.text = Levels.difficulty_level_names[Puzzle.difficulty]
+	level.text = "Level " + str(Puzzle.level)
+	$Timer.connect("timeout", self, "_update_time_elapsed")
+	restart.connect("pressed", self, "_on_restart_pressed")
+	home.connect("pressed", self, "_on_home_pressed")
+
+
+func _on_home_pressed() -> void:
+	get_tree().change_scene(Scenes.HomeScene)
+
+
+func _on_restart_pressed() -> void:
+	_generate_puzzle(Puzzle.content)
+
+
+func _update_time_elapsed() -> void:
+	time_elapsed += 1
+	
+	var minutes:int = time_elapsed / 60
+	var seconds:int = time_elapsed % 60
+	
+	var minutes_str:String
+	var seconds_str:String
+	
+	if minutes < 10:
+		minutes_str = "0" + str(minutes)
+	else:
+		minutes_str = str(minutes)
+	
+	if seconds < 10:
+		seconds_str = "0" + str(seconds)
+	else:
+		seconds_str = str(seconds)
+	
+	time_elapsed_lbl.text = minutes_str + ":" + seconds_str
 
 
 func _check_solution() -> void:
@@ -20,22 +60,9 @@ func _check_solution() -> void:
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()
 	
-	LevelGenerator.generate_puzzle(grid, Levels.PACKS.CLASSIC, puzzle)
+	LevelGenerator.generate_puzzle(grid, Puzzle.pack, puzzle)
 	
 	grid.call_deferred("adjust_board_size")
-
-
-func _on_LevelsCreator_levels_generated():
-	content = _read_classic_levels_file()
-	_generate_puzzle(content["1"])
-
-
-func _read_classic_levels_file() -> Dictionary:
-	var file = File.new()
-	file.open("user://classic_dfl_1.json", File.READ)
-	var content:Dictionary = JSON.parse(file.get_as_text()).result
-	file.close()
-	return content
 
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:

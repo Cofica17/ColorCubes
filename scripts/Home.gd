@@ -5,6 +5,7 @@ onready var grid:Grid = get_node("Grid")
 onready var previous:TextureButton = $Previous
 onready var next:TextureButton = $Next
 onready var puzzle_level:Label = $PuzzleLevel
+onready var play:Button = $Play
 
 var content:Dictionary
 var current_level = 1 
@@ -16,6 +17,15 @@ func _ready():
 	_setup_puzzle_generation()
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
+	play.connect("pressed", self, "_on_play_pressed")
+
+
+func _on_play_pressed() -> void:
+	Puzzle.pack = Levels.PACKS.CLASSIC
+	Puzzle.difficulty = Levels.DIFFICULTY.LEVEL_1
+	Puzzle.level = current_level
+	
+	get_tree().change_scene(Scenes.GameScene)
 
 
 func _on_previous_pressed() -> void:
@@ -50,6 +60,8 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	LevelGenerator.generate_puzzle(grid, Levels.PACKS.CLASSIC, puzzle)
 	
 	grid.call_deferred("adjust_board_size")
+	
+	Puzzle.content = puzzle
 
 
 func _setup_puzzle_generation():

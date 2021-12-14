@@ -57,6 +57,8 @@ CheckSolution="*res://singletons/CheckSolution.gd"
 Levels="*res://singletons/Levels.gd"
 LevelsCreatorConfiguration="*res://levels_creator/LevelsCreatorConfiguration.gd"
 LevelGenerator="*res://level_generator/LevelGenerator.gd"
+Puzzle="*res://singletons/Puzzle.gd"
+Scenes="*res://singletons/Scenes.gd"
 
 [display]
 
