@@ -1,5 +1,22 @@
 extends Node
 
+var classic := {
+	"colors" : {
+		0 : "#F25F5C",
+		1 : "#247BA0",
+		2 : "#70C1B3",
+		3 : "#F3E777",
+		4 : "#70C178",
+		5 : "5CCEF2",
+		6 : "#F3B177",
+		7 : "#A0249C"
+	},
+	"connection_rects_icons" : {
+		0 : load("res://assets/desert/icons/cacstus.png"),
+		1 : load("res://assets/desert/icons/scorpion.png")
+	}
+}
+
 var desert := {
 	"colors" : {
 		0 : "#b32e263d",

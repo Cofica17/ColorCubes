@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cacstus.png-39eabb7766431b5ea0c7af73fdc8928f.stex"
+path="res://.import/scorpion.png-a51dc93e38b942cecec43acc18227ab3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/desert/icons/cacstus.png"
-dest_files=[ "res://.import/cacstus.png-39eabb7766431b5ea0c7af73fdc8928f.stex" ]
+source_file="res://assets/themes/desert/icons/scorpion.png"
+dest_files=[ "res://.import/scorpion.png-a51dc93e38b942cecec43acc18227ab3.stex" ]
 
 [params]
 

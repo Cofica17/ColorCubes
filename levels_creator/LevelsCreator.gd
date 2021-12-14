@@ -32,13 +32,13 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 		var colors = configuration.colors
 		var levels = configuration.levels
 		
-		var mgr_idx =  randi() % board_size
-		
 		for i in levels:
 			result[level] = {
 				"board_size" : board_size,
 				"grid_rects" : []
 			}
+			
+			var mgr_idx =  randi() % board_size
 			
 			var all_chosen_colors:Array = []
 			

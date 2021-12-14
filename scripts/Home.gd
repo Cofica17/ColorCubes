@@ -2,19 +2,46 @@ extends Control
 tool
 
 onready var grid:Grid = get_node("Grid")
+onready var previous:TextureButton = $Previous
+onready var next:TextureButton = $Next
+onready var puzzle_level:Label = $PuzzleLevel
 
 var content:Dictionary
 var current_level = 1 
+var max_levels = 100
 
 
 func _ready():
-	pass
-	#Global.connect("grid_rect_switched", self, "_check_solution")
+	Global.current_theme = BoardThemes.classic
+	_setup_puzzle_generation()
+	previous.connect("pressed", self, "_on_previous_pressed")
+	next.connect("pressed", self, "_on_next_pressed")
 
 
-func _check_solution() -> void:
-	if CheckSolution.is_grid_solved(grid):
-		$AcceptDialog.popup()
+func _on_previous_pressed() -> void:
+	if current_level == 1:
+		return
+	
+	current_level -= 1
+	
+	_set_puzzle_level() 
+	
+	_generate_puzzle(content[str(current_level)])
+
+
+func _on_next_pressed() -> void:
+	if current_level == max_levels:
+		return
+	
+	current_level += 1
+	
+	_set_puzzle_level() 
+	
+	_generate_puzzle(content[str(current_level)])
+
+
+func _set_puzzle_level() -> void:
+	puzzle_level.text = str(current_level) + "/" + str(max_levels)
 
 
 func _generate_puzzle(puzzle:Dictionary) -> void:
@@ -25,7 +52,7 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.call_deferred("adjust_board_size")
 
 
-func _on_LevelsCreator_levels_generated():
+func _setup_puzzle_generation():
 	content = _read_classic_levels_file()
 	_generate_puzzle(content["1"])
 

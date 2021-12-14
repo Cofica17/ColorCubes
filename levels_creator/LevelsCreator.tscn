@@ -2,8 +2,8 @@
 
 [ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://levels_creator/LevelsCreator.gd" type="Script" id=2]
-[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
-[ext_resource path="res://assets/desert/tex/desert_bg.png" type="Texture" id=4]
+[ext_resource path="res://scripts/LevelCreatorGame.gd" type="Script" id=3]
+[ext_resource path="res://assets/themes/desert/tex/desert_bg.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -13,7 +13,7 @@ font_data = ExtResource( 1 )
 [sub_resource type="Theme" id=2]
 PopupDialog/styles/panel = null
 
-[node name="Game" type="Control"]
+[node name="LevelCreatorGame" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
