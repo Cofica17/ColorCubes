@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/fonts/autowide/Audiowide-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/quicksand/Quicksand-Light.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/arrow.png" type="Texture" id=5]
 [ext_resource path="res://assets/header.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Home.gd" type="Script" id=7]
+[ext_resource path="res://scenes/LevelSelect.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
@@ -177,3 +178,10 @@ text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LevelSelect" parent="." instance=ExtResource( 8 )]
+visible = false
+anchor_left = 0.08
+anchor_top = 0.225
+anchor_right = 0.92
+anchor_bottom = 0.9

@@ -6,6 +6,8 @@ onready var previous:TextureButton = $Previous
 onready var next:TextureButton = $Next
 onready var puzzle_level:Label = $PuzzleLevel
 onready var play:Button = $Play
+onready var grid_btn:Button = $Grid/GridButton
+onready var level_select:Control = $LevelSelect
 
 var content:Dictionary
 var current_level = 1 
@@ -13,11 +15,31 @@ var max_levels = 100
 
 
 func _ready():
-	Global.current_theme = BoardThemes.classic
-	_setup_puzzle_generation()
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
 	play.connect("pressed", self, "_on_play_pressed")
+	grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
+	Global.connect("level_chosen", self, "_on_level_chosen")
+	
+	Global.current_theme = BoardThemes.classic
+	content = _read_classic_levels_file()
+	fill_level_select()
+	
+	Global.emit_signal("level_chosen", Puzzle.current_preview)
+
+
+func _on_level_chosen(new_level:int) -> void:
+	current_level = new_level
+	_set_puzzle_level() 
+	_generate_puzzle(content[str(current_level)])
+
+
+func fill_level_select() -> void:
+	level_select.fill_levels(max_levels)
+
+
+func _on_grid_btn_pressed() -> void:
+	level_select.show()
 
 
 func _on_play_pressed() -> void:
@@ -32,22 +54,14 @@ func _on_previous_pressed() -> void:
 	if current_level == 1:
 		return
 	
-	current_level -= 1
-	
-	_set_puzzle_level() 
-	
-	_generate_puzzle(content[str(current_level)])
+	Global.emit_signal("level_chosen", current_level - 1)
 
 
 func _on_next_pressed() -> void:
 	if current_level == max_levels:
 		return
 	
-	current_level += 1
-	
-	_set_puzzle_level() 
-	
-	_generate_puzzle(content[str(current_level)])
+	Global.emit_signal("level_chosen", current_level + 1)
 
 
 func _set_puzzle_level() -> void:
@@ -62,11 +76,6 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.call_deferred("adjust_board_size")
 	
 	Puzzle.content = puzzle
-
-
-func _setup_puzzle_generation():
-	content = _read_classic_levels_file()
-	_generate_puzzle(content["1"])
 
 
 func _read_classic_levels_file() -> Dictionary:
