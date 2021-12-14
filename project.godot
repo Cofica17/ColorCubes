@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Classic_DF1",
+"language": "GDScript",
+"path": "res://levels_creator/configurations/classic/Classic_DF1.gd"
+}, {
 "base": "GridRect",
 "class": "ColoredGridRect",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://scripts/MoveableGridRect.gd"
 } ]
 _global_script_class_icons={
+"Classic_DF1": "",
 "ColoredGridRect": "",
 "Grid": "",
 "GridRect": "",
@@ -44,10 +50,13 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
-BoardThemes="*res://BoardThemes.gd"
-Utils="*res://Utils.gd"
-CheckSolution="*res://CheckSolution.gd"
+Global="*res://singletons/Global.gd"
+BoardThemes="*res://board_themes/BoardThemes.gd"
+Utils="*res://singletons/Utils.gd"
+CheckSolution="*res://singletons/CheckSolution.gd"
+Levels="*res://singletons/Levels.gd"
+LevelsCreatorConfiguration="*res://levels_creator/LevelsCreatorConfiguration.gd"
+LevelGenerator="*res://level_generator/LevelGenerator.gd"
 
 [display]
 

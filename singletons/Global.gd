@@ -13,6 +13,7 @@ var black:Color = "#000000"
 
 var current_theme : Dictionary
 var total_number_of_diff_connection_rects := 2
+var total_number_of_possible_colors := 8
 
 var colored_grid_rect
 var switch_grid_rects_initiated:bool = false

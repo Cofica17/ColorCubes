@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/Poppins-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://levels_creator/LevelsCreator.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=3]
+[ext_resource path="res://assets/desert/tex/desert_bg.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+PopupDialog/styles/panel = null
+
+[node name="Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.909804, 0.741176, 0.458824, 0.701961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" parent="." instance=ExtResource( 5 )]
+anchor_bottom = 0.8
+columns = 3
+rows = 3
+
+[node name="LevelsCreator" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="LevelsCreator"]
+margin_left = 179.755
+margin_top = 79.95
+margin_right = 505.755
+margin_bottom = 164.95
+custom_fonts/font = SubResource( 1 )
+text = "Generate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NExt" type="Button" parent="LevelsCreator"]
+margin_left = 472.549
+margin_top = 177.99
+margin_right = 711.549
+margin_bottom = 265.99
+custom_fonts/font = SubResource( 1 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous" type="Button" parent="LevelsCreator"]
+margin_left = 11.2656
+margin_top = 178.695
+margin_right = 250.266
+margin_bottom = 266.695
+custom_fonts/font = SubResource( 1 )
+text = "Previous"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelNum" type="LineEdit" parent="LevelsCreator"]
+margin_left = 263.716
+margin_top = 185.787
+margin_right = 446.716
+margin_bottom = 243.787
+custom_fonts/font = SubResource( 1 )
+placeholder_text = "type in 1 - 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+visible = true
+margin_left = 186.465
+margin_top = 491.591
+margin_right = 507.465
+margin_bottom = 617.591
+theme = SubResource( 2 )
+popup_exclusive = true
+window_title = "Solved!"
+dialog_text = "Solved!"
+
+[connection signal="levels_generated" from="LevelsCreator" to="." method="_on_LevelsCreator_levels_generated"]
+[connection signal="pressed" from="LevelsCreator/Button" to="LevelsCreator" method="_on_Button_pressed"]
+[connection signal="pressed" from="LevelsCreator/NExt" to="." method="_on_NExt_pressed"]
+[connection signal="pressed" from="LevelsCreator/Previous" to="." method="_on_Previous_pressed"]
+[connection signal="text_changed" from="LevelsCreator/LevelNum" to="." method="_on_LevelNum_text_changed"]
