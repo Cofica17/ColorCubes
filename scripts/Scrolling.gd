@@ -51,7 +51,6 @@ func _input(ev):
 				timer = Timer.new()
 				timer.one_shot = true
 				timer.wait_time = flick_dur
-				print(flick_dur)
 				timer.connect("timeout", self, "_on_timeout")
 			else:
 				Global.level_select_scrolling = false
