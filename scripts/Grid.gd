@@ -79,7 +79,7 @@ func _update_columns_and_rows_for_grid_rects() -> void:
 		grid_rect.column = column
 		grid_rect.row = row
 		
-		if (board_size % (column + 1)) == 0 and not column == 0:
+		if column == columns - 1:
 			row += 1
 			column = 0
 		else:

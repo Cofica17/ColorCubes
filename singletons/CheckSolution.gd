@@ -44,25 +44,25 @@ func _are_grid_rects_connected(grid:Grid, first_gr:GridRect) -> bool:
 			if grid_rect.column > 0:
 				var gr = grid.grid_container.get_child(grid_rect.id - 1)
 				
-				if gr.color == grid_rect.color:
+				if not gr is MoveableGridRect and gr.color == grid_rect.color:
 					_check_are_connected(connected_rects, grid_rect, gr)
 				
 			if grid_rect.column < grid.columns - 1:
 				var gr = grid.grid_container.get_child(grid_rect.id + 1)
 				
-				if gr.color == grid_rect.color:
+				if not gr is MoveableGridRect and gr.color == grid_rect.color:
 					_check_are_connected(connected_rects, grid_rect, gr)
 			
 			if grid_rect.row > 0:
 				var gr = grid.grid_container.get_child(grid_rect.id - grid.columns)
 				
-				if gr.color == grid_rect.color:
+				if not gr is MoveableGridRect and gr.color == grid_rect.color:
 					_check_are_connected(connected_rects, grid_rect, gr)
 			
 			if grid_rect.row < grid.rows - 1:
 				var gr = grid.grid_container.get_child(grid_rect.id + grid.columns)
 				
-				if gr.color == grid_rect.color:
+				if not gr is MoveableGridRect and gr.color == grid_rect.color:
 					_check_are_connected(connected_rects, grid_rect, gr)
 		
 		if previous_connected_rects_size == connected_rects.size():
