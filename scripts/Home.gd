@@ -25,9 +25,10 @@ func _ready():
 	
 	Global.current_theme = BoardThemes.classic
 	content = _read_classic_levels_file()
+	Puzzle.content = content
 	fill_level_select()
 	
-	Global.emit_signal("level_chosen", Puzzle.current_preview)
+	Global.emit_signal("level_chosen", Puzzle.level)
 
 
 func _on_level_chosen(new_level:int) -> void:
@@ -84,7 +85,7 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	
 	grid.call_deferred("adjust_board_size")
 	
-	Puzzle.content = puzzle
+	Puzzle.puzzle = puzzle
 
 
 func _read_classic_levels_file() -> Dictionary:

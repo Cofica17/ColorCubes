@@ -1,11 +1,11 @@
 extends Node
 
-var current_preview:int = 1
-
 var pack:int
 var difficulty:int
-var level:int
+var level:int = 1
 var content:Dictionary
+var max_levels:int = 100
+var puzzle:Dictionary
 
 var chosen_color = "#373A40"
 var solved_color = "#83E694"
@@ -16,4 +16,4 @@ func _ready():
 
 
 func _on_level_chosen(lvl) -> void:
-	current_preview = lvl
+	level = lvl

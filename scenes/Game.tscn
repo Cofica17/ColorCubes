@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bug.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/home.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/quicksand/Quicksand-Light.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
@@ -161,3 +162,24 @@ margin_right = 509.0
 margin_bottom = 582.0
 dialog_text = "Solved
 "
+
+[node name="LevelClearedContainer" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LevelClearedBackground" type="ColorRect" parent="LevelClearedContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.807843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" parent="LevelClearedContainer" instance=ExtResource( 9 )]
+anchor_left = 0.1
+anchor_top = 0.35
+anchor_right = 0.9
+anchor_bottom = 0.6
+margin_top = 0.561249
+margin_bottom = 0.561279

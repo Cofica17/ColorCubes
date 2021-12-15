@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/home.png" type="Texture" id=2]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Popup.gd" type="Script" id=4]
+[ext_resource path="res://assets/restart.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+
+[sub_resource type="DynamicFont" id=2]
+size = 58
+font_data = ExtResource( 1 )
+
+[node name="Popup" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 0.3
+margin_top = 0.561234
+margin_bottom = 0.561218
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PackLabel" type="Label" parent="."]
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.3
+margin_right = -1.0
+margin_bottom = 0.0399933
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+text = "Level cleared!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="TextureButton" parent="."]
+anchor_left = 0.7
+anchor_top = 0.7
+anchor_right = 0.8
+anchor_bottom = 0.9
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Home" type="TextureButton" parent="."]
+anchor_left = 0.2
+anchor_top = 0.7
+anchor_right = 0.3
+anchor_bottom = 0.9
+margin_left = 0.0772552
+margin_top = 0.0610352
+margin_right = 0.07724
+margin_bottom = 0.0610352
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="TextureButton" parent="."]
+anchor_left = 0.45
+anchor_top = 0.7
+anchor_right = 0.55
+anchor_bottom = 0.9
+rect_pivot_offset = Vector2( 26.4371, 29.6078 )
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Home" to="." method="_on_Home_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

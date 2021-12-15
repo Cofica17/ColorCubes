@@ -8,7 +8,7 @@ func is_grid_solved(grid:Grid) -> bool:
 
 
 func _all_colors_connected(grid:Grid) -> bool:
-	for i in Puzzle.content.total_colors:
+	for i in Puzzle.puzzle.total_colors:
 		var current_color = Color(Global.current_theme.colors[i])
 		
 		var first_gr

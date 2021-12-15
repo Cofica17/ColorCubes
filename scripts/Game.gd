@@ -8,18 +8,33 @@ onready var level:Label = $VBoxContainer/Level
 onready var time_elapsed_lbl:Label = $VBoxContainer/TimeElapsed
 onready var restart:TextureButton = $Restart
 onready var home:TextureButton = $Home
+onready var level_cleared_container:Control = $LevelClearedContainer
+onready var lvl_solved_popup:Panel = $LevelClearedContainer/Popup
 
 var time_elapsed = 0
 
 func _ready():
 	Global.connect("grid_rect_switched", self, "_check_solution")
-	_generate_puzzle(Puzzle.content)
+	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 	pack.text = Levels.pack_names[Puzzle.pack] + " Pack"
 	difficulty.text = Levels.difficulty_level_names[Puzzle.difficulty]
 	level.text = "Level " + str(Puzzle.level)
 	$Timer.connect("timeout", self, "_update_time_elapsed")
 	restart.connect("pressed", self, "_on_restart_pressed")
 	home.connect("pressed", self, "_on_home_pressed")
+	lvl_solved_popup.connect("next_level_pressed", self, "_on_next_level_pressed")
+	lvl_solved_popup.connect("home_pressed", self, "_on_home_pressed")
+	lvl_solved_popup.connect("restart_pressed", self, "_on_restart_pressed")
+
+
+func _on_next_level_pressed() -> void:
+	level_cleared_container.hide()
+	Global.emit_signal("level_chosen", Puzzle.level + 1)
+	time_elapsed = 0
+	_update_time_elapsed()
+	level.text = "Level " + str(Puzzle.level)
+	$Timer.start()
+	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 
 
 func _on_home_pressed() -> void:
@@ -27,7 +42,10 @@ func _on_home_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	_generate_puzzle(Puzzle.content)
+	level_cleared_container.hide()
+	time_elapsed = 0
+	_update_time_elapsed()
+	_generate_puzzle(Puzzle.puzzle)
 
 
 func _update_time_elapsed() -> void:
@@ -54,7 +72,12 @@ func _update_time_elapsed() -> void:
 
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):
-		$AcceptDialog.popup()
+		yield(get_tree().create_timer(0.3), "timeout")
+		level_cleared_container.show()
+		$Timer.stop()
+		
+		if Puzzle.level == Puzzle.max_levels:
+			$LevelClearedContainer/Popup/Next.hide()
 
 
 func _generate_puzzle(puzzle:Dictionary) -> void:

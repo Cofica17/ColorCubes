@@ -155,6 +155,9 @@ texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Play" type="Button" parent="."]
 anchor_left = 0.3
