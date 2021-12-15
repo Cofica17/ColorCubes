@@ -103,7 +103,7 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 func _set_puzzle_content() -> void:
 	var file = File.new()
 	var file_name = Levels.file_names[Puzzle.pack][Puzzle.difficulty]
-	file.open("user://" + file_name, File.READ)
+	file.open("res://levels_jsons/" + file_name, File.READ)
 	var content:Dictionary = JSON.parse(file.get_as_text()).result
 	file.close()
 	Puzzle.content = content
