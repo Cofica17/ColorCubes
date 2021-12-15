@@ -13,13 +13,15 @@
 size = 58
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 33
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -29,9 +31,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=9]
 size = 72
 font_data = ExtResource( 1 )
 
@@ -92,7 +92,7 @@ margin_top = 88.0
 margin_right = 359.0
 margin_bottom = 130.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
 text = "INTRODUCTION"
 align = 1
@@ -120,7 +120,7 @@ margin_top = -0.499573
 margin_right = 0.16983
 margin_bottom = -9.8595
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
 text = "1/100"
 align = 1
@@ -164,12 +164,12 @@ anchor_bottom = 0.872
 margin_top = -0.119995
 margin_right = -3.05176e-05
 margin_bottom = -28.4401
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_disabled = Color( 0.223529, 0.223529, 0.266667, 1 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
 custom_colors/font_color_hover = Color( 0.223529, 0.223529, 0.266667, 1 )

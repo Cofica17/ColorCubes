@@ -35,6 +35,7 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 		for i in levels:
 			result[level] = {
 				"board_size" : board_size,
+				"total_colors" : colors,
 				"grid_rects" : []
 			}
 			

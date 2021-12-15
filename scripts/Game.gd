@@ -12,7 +12,7 @@ onready var home:TextureButton = $Home
 var time_elapsed = 0
 
 func _ready():
-	#Global.connect("grid_rect_switched", self, "_check_solution")
+	Global.connect("grid_rect_switched", self, "_check_solution")
 	_generate_puzzle(Puzzle.content)
 	pack.text = Levels.pack_names[Puzzle.pack] + " Pack"
 	difficulty.text = Levels.difficulty_level_names[Puzzle.difficulty]

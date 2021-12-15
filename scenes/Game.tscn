@@ -153,3 +153,11 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
 autostart = true
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+margin_left = 238.0
+margin_top = 410.0
+margin_right = 509.0
+margin_bottom = 582.0
+dialog_text = "Solved
+"

@@ -64,8 +64,26 @@ func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
 		grid_container.move_child(other_grid_rect, moveable_grid_rect.id)
 	
 	_update_ids_for_grid_rects()
+	_update_columns_and_rows_for_grid_rects()
 	
 	Global.emit_signal("grid_rect_switched")
+
+
+func _update_columns_and_rows_for_grid_rects() -> void:
+	var column = 0
+	var row = 0
+	
+	var board_size = columns * rows
+	
+	for grid_rect in grid_container.get_children():
+		grid_rect.column = column
+		grid_rect.row = row
+		
+		if (board_size % (column + 1)) == 0 and not column == 0:
+			row += 1
+			column = 0
+		else:
+			column += 1
 
 
 func _update_ids_for_grid_rects() -> void:
