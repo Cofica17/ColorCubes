@@ -9,11 +9,6 @@ var id:int
 var color:Color setget set_color, get_rect_color
 
 
-func _gui_input(event):
-	if event.is_pressed():
-		_on_clicked()
-
-
 func get_rect_color() -> Color:
 	return color
 

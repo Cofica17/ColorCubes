@@ -24,3 +24,7 @@ func set_color(v:Color) -> void:
 
 func _on_clicked() -> void:
 	Global.finish_switch_grid_rects(self)
+
+
+func _on_Button_pressed():
+	_on_clicked()
