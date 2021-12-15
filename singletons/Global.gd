@@ -10,6 +10,7 @@ signal cancel_switch_grid_rects()
 signal puzzle_generated()
 signal grid_rect_switched()
 signal level_chosen(new_level)
+signal difficulty_changed(idx)
 
 var white:Color = "#ffffff"
 var black:Color = "#000000"

@@ -9,26 +9,40 @@ onready var play:Button = $Play
 onready var grid_btn:Button = $Grid/GridButton
 onready var level_select:Control = $LevelSelect
 onready var exit_level_select:Button = $ExitLevelSelect
+onready var choose_difficulty_popup:Panel = $ChooseDifficultyPopup
+onready var difficulty_btn:Button = $VBoxContainer/DifficultyBtn
 
 var content:Dictionary
 var current_level = 1 
 var max_levels = 100
 
-
+var a = "a".capitalize()
 func _ready():
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
 	play.connect("pressed", self, "_on_play_pressed")
 	grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
 	Global.connect("level_chosen", self, "_on_level_chosen")
+	Puzzle.connect("difficulty_changed", self, "_on_difficulty_changed")
 	exit_level_select.connect("pressed", self, "_exit_level_select")
+	difficulty_btn.connect("pressed", self, "_on_difficulty_btn_pressed")
 	
 	Global.current_theme = BoardThemes.classic
 	content = _read_classic_levels_file()
 	Puzzle.content = content
 	fill_level_select()
+	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
 	
 	Global.emit_signal("level_chosen", Puzzle.level)
+
+
+func _on_difficulty_btn_pressed() -> void:
+	choose_difficulty_popup.show()
+
+
+func _on_difficulty_changed() -> void:
+	choose_difficulty_popup.hide()
+	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
 
 
 func _on_level_chosen(new_level:int) -> void:
