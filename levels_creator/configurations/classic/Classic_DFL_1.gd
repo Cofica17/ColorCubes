@@ -1,7 +1,5 @@
 extends Node
-class_name Classic_DF1
-
-var save_file_name
+class_name Classic_DFL_1
 
 var configuration = [
 			{

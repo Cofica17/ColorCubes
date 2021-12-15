@@ -12,11 +12,10 @@ onready var exit_level_select:Button = $ExitLevelSelect
 onready var choose_difficulty_popup:Panel = $ChooseDifficultyPopup
 onready var difficulty_btn:Button = $VBoxContainer/DifficultyBtn
 
-var content:Dictionary
 var current_level = 1 
 var max_levels = 100
 
-var a = "a".capitalize()
+
 func _ready():
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
@@ -28,8 +27,7 @@ func _ready():
 	difficulty_btn.connect("pressed", self, "_on_difficulty_btn_pressed")
 	
 	Global.current_theme = BoardThemes.classic
-	content = _read_classic_levels_file()
-	Puzzle.content = content
+	_set_puzzle_content()
 	fill_level_select()
 	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
 	
@@ -43,12 +41,14 @@ func _on_difficulty_btn_pressed() -> void:
 func _on_difficulty_changed() -> void:
 	choose_difficulty_popup.hide()
 	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
+	_set_puzzle_content()
+	Global.emit_signal("level_chosen", 1)
 
 
 func _on_level_chosen(new_level:int) -> void:
 	current_level = new_level
 	_set_puzzle_level() 
-	_generate_puzzle(content[str(current_level)])
+	_generate_puzzle(Puzzle.content[str(current_level)])
 	_exit_level_select()
 
 
@@ -67,8 +67,6 @@ func _on_grid_btn_pressed() -> void:
 
 
 func _on_play_pressed() -> void:
-	Puzzle.pack = Levels.PACKS.CLASSIC
-	Puzzle.difficulty = Levels.DIFFICULTY.LEVEL_1
 	Puzzle.level = current_level
 	
 	get_tree().change_scene(Scenes.GameScene)
@@ -102,12 +100,13 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	Puzzle.puzzle = puzzle
 
 
-func _read_classic_levels_file() -> Dictionary:
+func _set_puzzle_content() -> void:
 	var file = File.new()
-	file.open("user://classic_dfl_1.json", File.READ)
-	var _content:Dictionary = JSON.parse(file.get_as_text()).result
+	var file_name = Levels.file_names[Puzzle.pack][Puzzle.difficulty]
+	file.open("user://" + file_name, File.READ)
+	var content:Dictionary = JSON.parse(file.get_as_text()).result
 	file.close()
-	return _content
+	Puzzle.content = content
 
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:

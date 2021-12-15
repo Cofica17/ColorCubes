@@ -24,7 +24,9 @@ var pack_names := {
 
 var file_names := {
 	PACKS.CLASSIC : {
-		DIFFICULTY.LEVEL_1 : "classic_dfl_1.json"
+		DIFFICULTY.LEVEL_1 : "classic_dfl_1.json",
+		DIFFICULTY.LEVEL_2 : "classic_dfl_2.json",
+		DIFFICULTY.LEVEL_3 : "classic_dfl_3.json"
 	}
 }
 

@@ -123,4 +123,6 @@ func _get_color_with_max_sum(color_counter) -> int:
 
 func _on_Button_pressed():
 	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_1)
+	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_2)
+	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_3)
 	emit_signal("levels_generated")

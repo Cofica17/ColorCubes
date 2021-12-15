@@ -10,9 +10,19 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "Classic_DF1",
+"class": "Classic_DFL_1",
 "language": "GDScript",
-"path": "res://levels_creator/configurations/classic/Classic_DF1.gd"
+"path": "res://levels_creator/configurations/classic/Classic_DFL_1.gd"
+}, {
+"base": "Node",
+"class": "Classic_DFL_2",
+"language": "GDScript",
+"path": "res://levels_creator/configurations/classic/Classic_DFL_2.gd"
+}, {
+"base": "Node",
+"class": "Classic_DFL_3",
+"language": "GDScript",
+"path": "res://levels_creator/configurations/classic/Classic_DFL_3.gd"
 }, {
 "base": "GridRect",
 "class": "ColoredGridRect",
@@ -35,7 +45,9 @@ _global_script_classes=[ {
 "path": "res://scripts/MoveableGridRect.gd"
 } ]
 _global_script_class_icons={
-"Classic_DF1": "",
+"Classic_DFL_1": "",
+"Classic_DFL_2": "",
+"Classic_DFL_3": "",
 "ColoredGridRect": "",
 "Grid": "",
 "GridRect": "",
