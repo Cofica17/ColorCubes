@@ -16,10 +16,8 @@ var unsolved_color = "#ffffff"
 func _ready():
 	Global.connect("level_chosen", self, "_on_level_chosen")
 
-
 func _on_level_chosen(lvl) -> void:
 	level = lvl
-
 
 func change_difficulty(new_dif) -> void:
 	difficulty = new_dif
