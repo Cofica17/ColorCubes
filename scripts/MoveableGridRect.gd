@@ -3,7 +3,6 @@ class_name MoveableGridRect
 
 onready var inside_panel = get_node("InsidePanel")
 
-
 func _ready():
 	color = inside_panel.get_stylebox("panel").bg_color
 	Global.connect("cancel_switch_grid_rects", self, "set_color", [color])
@@ -14,6 +13,9 @@ func _on_clicked() -> void:
 	
 	Global.initiate_switch_grid_rects()
 	set_color(Global.black)
+
+func set_exact_space_color(v:Color) -> void:
+	.set_exact_space_color(v)
 
 func set_color(v:Color) -> void:
 	color = v

@@ -45,25 +45,35 @@ func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
 		return
 	
 	if dir == Global.DIRECTION.LEFT:
-		grid_container.move_child(moveable_grid_rect, moveable_grid_rect.id - 1)
+		switch_grid_rects(moveable_grid_rect, moveable_grid_rect.id - 1)
+	#	grid_container.move_child(moveable_grid_rect, moveable_grid_rect.id - 1)
 	
 	if dir == Global.DIRECTION.RIGHT:
-		grid_container.move_child(moveable_grid_rect, moveable_grid_rect.id + 1)
+		switch_grid_rects(moveable_grid_rect, moveable_grid_rect.id + 1)
 	
 	if dir == Global.DIRECTION.UP:
 		var other_grid_rect = grid_container.get_child(moveable_grid_rect.id - columns)
-		grid_container.move_child(moveable_grid_rect, moveable_grid_rect.id - columns)
-		grid_container.move_child(other_grid_rect, moveable_grid_rect.id)
+		switch_grid_rects(moveable_grid_rect, moveable_grid_rect.id - columns)
+		switch_grid_rects(other_grid_rect, moveable_grid_rect.id, false)
 	
 	if dir == Global.DIRECTION.DOWN:
 		var other_grid_rect = grid_container.get_child(moveable_grid_rect.id + columns)
-		grid_container.move_child(moveable_grid_rect, moveable_grid_rect.id + columns)
-		grid_container.move_child(other_grid_rect, moveable_grid_rect.id)
+		switch_grid_rects(moveable_grid_rect, moveable_grid_rect.id + columns)
+		switch_grid_rects(other_grid_rect, moveable_grid_rect.id, false)
 	
 	_update_ids_for_grid_rects()
 	_update_columns_and_rows_for_grid_rects()
 	
 	Global.emit_signal("grid_rect_switched")
+
+func switch_grid_rects(moveable_grid_rect, grid_rect_id, set_exact_color=true):
+	if set_exact_color:
+		var grid_rect = grid_container.get_child(grid_rect_id)
+		var temp_exact_space_color = grid_rect.exact_space_color
+		grid_rect.set_exact_space_color(moveable_grid_rect.exact_space_color)
+		moveable_grid_rect.set_exact_space_color(temp_exact_space_color)
+	
+	grid_container.move_child(moveable_grid_rect, grid_rect_id)
 
 func _update_columns_and_rows_for_grid_rects() -> void:
 	var column = 0

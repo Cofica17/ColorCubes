@@ -92,7 +92,7 @@ func add_gimmick(gimmick, level):
 
 func add_exact_spaces_gimmick(level):
 	for rect in level["grid_rects"]:
-		rect.color_space = 0 #randi() % colors
+		rect.color_space = randi() % level.total_colors
 	return level["grid_rects"]
 
 func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Array) -> Array:

@@ -14,15 +14,12 @@ anchor_bottom = 0.7
 margin_right = -6.10352e-05
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/vseparation = 5
-custom_constants/hseparation = 5
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
 columns = 5
 __meta__ = {
 "_edit_use_anchors_": false

@@ -35,7 +35,6 @@ enum DIRECTION {
 func initiate_switch_grid_rects() -> void:
 	switch_grid_rects_initiated = true
 
-
 func finish_switch_grid_rects(grid_rect:GridRect) -> void:
 	if not switch_grid_rects_initiated and not one_touch_move:
 		cancel_switch_grid_rects()
@@ -44,7 +43,6 @@ func finish_switch_grid_rects(grid_rect:GridRect) -> void:
 	colored_grid_rect = grid_rect
 	emit_signal("switch_grid_rects", colored_grid_rect)
 	cancel_switch_grid_rects()
-
 
 func cancel_switch_grid_rects() -> void:
 	switch_grid_rects_initiated = false
