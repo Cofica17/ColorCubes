@@ -9,13 +9,11 @@ var level
 func _ready():
 	$Button.connect("pressed", self, "_on_pressed")
 
-
 func _on_pressed() -> void:
 	if Global.level_select_scrolling:
 		return
 	
 	Global.emit_signal("level_chosen", level)
-
 
 func set_color(v) -> void:
 	color = v
@@ -29,7 +27,6 @@ func set_color(v) -> void:
 	var new_style = current_style.duplicate()
 	new_style.bg_color = color
 	add_stylebox_override("panel", new_style)
-
 
 func set_level(v:int) -> void:
 	level = v

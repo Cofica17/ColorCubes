@@ -43,6 +43,7 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 		var board_size = configuration.board_size
 		var colors = configuration.colors
 		var levels = configuration.levels
+		var gimmicks = configuration.gimmicks
 		
 		for i in levels:
 			result[level] = {
@@ -77,9 +78,22 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 			
 			result[level]["grid_rects"] = check_colors_and_adjust(configuration.min_amount_same_color_cubes, result[level]["grid_rects"])
 			
+			for gimmick in gimmicks:
+				result[level]["grid_rects"] = add_gimmick(gimmick, result[level])
+			
 			level += 1
 	
 	return result
+
+func add_gimmick(gimmick, level):
+	match gimmick:
+		Puzzle.GIMMICKS.EXACT_SPACES:
+			return add_exact_spaces_gimmick(level)
+
+func add_exact_spaces_gimmick(level):
+	for rect in level["grid_rects"]:
+		rect.color_space = 0 #randi() % colors
+	return level["grid_rects"]
 
 func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Array) -> Array:
 	var color_counter = {}

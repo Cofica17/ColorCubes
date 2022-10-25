@@ -8,7 +8,6 @@ func _ready():
 	color = inside_panel.get_stylebox("panel").bg_color
 	Global.connect("cancel_switch_grid_rects", self, "set_color", [color])
 
-
 func _on_clicked() -> void:
 	if Global.one_touch_move:
 		return
@@ -16,14 +15,12 @@ func _on_clicked() -> void:
 	Global.initiate_switch_grid_rects()
 	set_color(Global.black)
 
-
 func set_color(v:Color) -> void:
 	color = v
 	var current_style = inside_panel.get_stylebox("panel")
 	var new_style = current_style.duplicate()
 	new_style.bg_color = color
 	inside_panel.add_stylebox_override("panel", new_style)
-
 
 func has_point(point:Vector2) -> bool:
 	if(rect_size.x == 0):
