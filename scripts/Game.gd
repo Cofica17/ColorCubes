@@ -26,27 +26,24 @@ func _ready():
 	lvl_solved_popup.connect("home_pressed", self, "_on_home_pressed")
 	lvl_solved_popup.connect("restart_pressed", self, "_on_restart_pressed")
 
-
 func _on_next_level_pressed() -> void:
 	level_cleared_container.hide()
 	Global.emit_signal("level_chosen", Puzzle.level + 1)
-	time_elapsed = 0
+	time_elapsed = -1
 	_update_time_elapsed()
 	level.text = "Level " + str(Puzzle.level)
 	$Timer.start()
 	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 
-
 func _on_home_pressed() -> void:
 	get_tree().change_scene(Scenes.HomeScene)
 
-
 func _on_restart_pressed() -> void:
 	level_cleared_container.hide()
-	time_elapsed = 0
+	time_elapsed = -1
 	_update_time_elapsed()
+	$Timer.start()
 	_generate_puzzle(Puzzle.puzzle)
-
 
 func _update_time_elapsed() -> void:
 	time_elapsed += 1
@@ -69,7 +66,6 @@ func _update_time_elapsed() -> void:
 	
 	time_elapsed_lbl.text = minutes_str + ":" + seconds_str
 
-
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):
 		yield(get_tree().create_timer(0.3), "timeout")
@@ -79,14 +75,10 @@ func _check_solution() -> void:
 		if Puzzle.level == Puzzle.max_levels:
 			$LevelClearedContainer/Popup/Next.hide()
 
-
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()
-	
 	LevelGenerator.generate_puzzle(grid, Puzzle.pack, puzzle)
-	
 	grid.call_deferred("adjust_board_size")
-
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
 #	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:

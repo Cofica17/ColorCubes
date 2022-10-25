@@ -65,8 +65,8 @@ __meta__ = {
 [node name="Pack" type="Label" parent="VBoxContainer"]
 margin_right = 431.0
 margin_bottom = 65.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "Classic Pack"
 align = 1
 
@@ -75,8 +75,8 @@ margin_top = 82.0
 margin_right = 431.0
 margin_bottom = 124.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "INTRODUCTION"
 align = 1
 
@@ -85,8 +85,8 @@ margin_top = 141.0
 margin_right = 431.0
 margin_bottom = 183.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Level 23"
 align = 1
 
@@ -94,8 +94,8 @@ align = 1
 margin_top = 200.0
 margin_right = 431.0
 margin_bottom = 253.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "00:00"
 align = 1
 
@@ -113,9 +113,6 @@ rect_pivot_offset = Vector2( 26.4371, 29.6078 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Home" type="TextureButton" parent="."]
 anchor_left = 0.2
