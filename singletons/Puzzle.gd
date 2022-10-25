@@ -1,5 +1,9 @@
 extends Node
 
+enum GIMMICKS {
+	EXACT_SPACES
+}
+
 signal difficulty_changed
 
 var pack:int = 0

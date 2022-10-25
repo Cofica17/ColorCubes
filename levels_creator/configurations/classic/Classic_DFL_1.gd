@@ -6,7 +6,8 @@ var configuration = [
 				"board_size" : 9,
 				"colors" : 3,
 				"levels" : 10,
-				"min_amount_same_color_cubes" : 2
+				"min_amount_same_color_cubes" : 2,
+				"gimmicks" : [Puzzle.GIMMICKS.EXACT_SPACES]
 			},
 			{
 				"board_size" : 9,

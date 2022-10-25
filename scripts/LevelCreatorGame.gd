@@ -2,6 +2,9 @@ extends Control
 tool
 
 onready var grid:Grid = get_node("Grid")
+onready var pack_option_btn:OptionButton = $LevelsCreator/Pack
+onready var difficulty_option_btn:OptionButton = $LevelsCreator/Difficulty
+onready var levels_creator = $LevelsCreator
 
 const root_folder = "res://levels_jsons/"
 
@@ -12,6 +15,15 @@ var current_level = 1
 func _ready():
 	Global.current_theme = BoardThemes.desert
 	Global.connect("grid_rect_switched", self, "_check_solution")
+	pack_option_btn.connect("item_selected", levels_creator , "on_pack_selected")
+	fill_option_buttons()
+
+func fill_option_buttons():
+	for pack in Levels.PACKS:
+		pack_option_btn.add_item(Levels.get_pack_name(Levels.PACKS[pack]))
+	
+	for difficulty in Levels.DIFFICULTY:
+		difficulty_option_btn.add_item(Levels.get_difficulty_name(Levels.DIFFICULTY[difficulty]))
 
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):
@@ -39,18 +51,18 @@ func _on_LevelNum_text_changed(new_text):
 	if new_text in content:
 		_generate_puzzle(content[new_text])
 
-func _on_NExt_pressed():
-	current_level += 1
-	
-	if current_level > 100:
-		current_level = 100
-	
-	_generate_puzzle(content[str(current_level)])
-
 func _on_Previous_pressed():
 	current_level -= 1
 	
 	if current_level < 1:
 		current_level = 1
+	
+	_generate_puzzle(content[str(current_level)])
+
+func _on_next_pressed():
+	current_level += 1
+	
+	if current_level > 100:
+		current_level = 100
 	
 	_generate_puzzle(content[str(current_level)])

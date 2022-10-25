@@ -25,4 +25,8 @@ var difficulty_level_names := {
 func get_file_name(pack, difficulty) -> String:
 	return "%s_%s.json" % [pack_names[pack], difficulty_level_names[difficulty]]
 
+func get_pack_name(pack):
+	return pack_names[pack]
 
+func get_difficulty_name(difficulty):
+	return difficulty_level_names[difficulty]

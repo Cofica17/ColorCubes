@@ -3,15 +3,29 @@ extends Node2D
 signal levels_generated
 
 var root_folder = "res://levels_jsons/"
+var current_pack = Levels.PACKS.CLASSIC
+var current_difficulty = Levels.DIFFICULTY.LEVEL_1
 
 func _ready():
 	randomize()
 
-func generate_levels(pack, level) -> void:
-	var configuration = LevelsCreatorConfiguration.get_configuration(pack, level)
-	var file_name = Levels.get_file_name(pack, level)
+func on_pack_selected(item):
+	current_pack = item
+
+func on_difficulty_selected(item):
+	current_difficulty = item
+
+func generate_levels(pack, difficulty) -> void:
+	var configuration = LevelsCreatorConfiguration.get_configuration(pack, difficulty)
+	var file_name = Levels.get_file_name(pack, difficulty)
+	var generated_levels
 	
-	var generated_levels = generate_classic_levels(configuration)
+	match pack:
+		Levels.PACKS.CLASSIC:
+			generated_levels = generate_classic_levels(configuration)
+	
+	if not generated_levels:
+		return
 	
 	var file_path = root_folder + file_name
 	
@@ -116,8 +130,6 @@ func _get_color_with_max_sum(color_counter) -> int:
 			idx = c
 	return idx
 
-func _on_Button_pressed():
-	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_1)
-	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_2)
-	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_3)
+func _on_generate_btn_pressed():
+	generate_levels(current_pack, current_difficulty)
 	emit_signal("levels_generated")
