@@ -2,7 +2,7 @@ extends Node2D
 
 signal levels_generated
 
-var root_folder = "user://"
+var root_folder = "res://levels_jsons/"
 
 func _ready():
 	randomize()
@@ -13,7 +13,7 @@ func generate_levels(pack, level) -> void:
 	
 	var generated_levels = generate_classic_levels(configuration)
 	
-	var file_path = root_folder + "/" + file_name
+	var file_path = root_folder + file_name
 	
 	var file = File.new()
 	file.open(file_path, File.WRITE)
