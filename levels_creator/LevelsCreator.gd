@@ -7,7 +7,6 @@ var root_folder = "user://"
 func _ready():
 	randomize()
 
-
 func generate_levels(pack, level) -> void:
 	var configuration = LevelsCreatorConfiguration.get_configuration(pack, level)
 	var file_name = Levels.get_file_name(pack, level)
@@ -20,7 +19,6 @@ func generate_levels(pack, level) -> void:
 	file.open(file_path, File.WRITE)
 	file.store_string(JSON.print(generated_levels))
 	file.close()
-
 
 func generate_classic_levels(config_array:Array) -> Dictionary:
 	var result := {}
@@ -69,7 +67,6 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 	
 	return result
 
-
 func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Array) -> Array:
 	var color_counter = {}
 	
@@ -110,7 +107,6 @@ func check_colors_and_adjust(min_amount_same_color_cubes:int, level_details:Arra
 	
 	return level_details
 
-
 func _get_color_with_max_sum(color_counter) -> int:
 	var m = 0
 	var idx
@@ -119,7 +115,6 @@ func _get_color_with_max_sum(color_counter) -> int:
 			m = color_counter[c]
 			idx = c
 	return idx
-
 
 func _on_Button_pressed():
 	generate_levels(Levels.PACKS.CLASSIC, Levels.DIFFICULTY.LEVEL_1)

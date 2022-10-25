@@ -26,9 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.909804, 0.741176, 0.458824, 0.701961 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -55,9 +52,6 @@ margin_right = 505.755
 margin_bottom = 164.95
 custom_fonts/font = SubResource( 1 )
 text = "Generate"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NExt" type="Button" parent="LevelsCreator"]
 margin_left = 472.549
