@@ -9,7 +9,7 @@ var current_level = 1
 
 func _ready():
 	Global.current_theme = BoardThemes.desert
-	#Global.connect("grid_rect_switched", self, "_check_solution")
+	Global.connect("grid_rect_switched", self, "_check_solution")
 
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):

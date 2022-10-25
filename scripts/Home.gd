@@ -33,10 +33,8 @@ func _ready():
 	
 	Global.emit_signal("level_chosen", Puzzle.level)
 
-
 func _on_difficulty_btn_pressed() -> void:
 	choose_difficulty_popup.show()
-
 
 func _on_difficulty_changed() -> void:
 	choose_difficulty_popup.hide()
@@ -44,33 +42,26 @@ func _on_difficulty_changed() -> void:
 	_set_puzzle_content()
 	Global.emit_signal("level_chosen", 1)
 
-
 func _on_level_chosen(new_level:int) -> void:
 	current_level = new_level
 	_set_puzzle_level() 
 	_generate_puzzle(Puzzle.content[str(current_level)])
 	_exit_level_select()
 
-
 func fill_level_select() -> void:
 	level_select.fill_levels(max_levels)
-
 
 func _exit_level_select() -> void:
 	level_select.hide()
 	exit_level_select.hide()
 
-
 func _on_grid_btn_pressed() -> void:
 	level_select.show()
 	exit_level_select.show()
 
-
 func _on_play_pressed() -> void:
 	Puzzle.level = current_level
-	
 	get_tree().change_scene(Scenes.GameScene)
-
 
 func _on_previous_pressed() -> void:
 	if current_level == 1:
@@ -78,27 +69,20 @@ func _on_previous_pressed() -> void:
 	
 	Global.emit_signal("level_chosen", current_level - 1)
 
-
 func _on_next_pressed() -> void:
 	if current_level == max_levels:
 		return
 	
 	Global.emit_signal("level_chosen", current_level + 1)
 
-
 func _set_puzzle_level() -> void:
 	puzzle_level.text = str(current_level) + "/" + str(max_levels)
 
-
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()
-	
 	LevelGenerator.generate_puzzle(grid, Levels.PACKS.CLASSIC, puzzle)
-	
 	grid.call_deferred("adjust_board_size")
-	
 	Puzzle.puzzle = puzzle
-
 
 func _set_puzzle_content() -> void:
 	var file = File.new()
@@ -107,7 +91,6 @@ func _set_puzzle_content() -> void:
 	var content:Dictionary = JSON.parse(file.get_as_text()).result
 	file.close()
 	Puzzle.content = content
-
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
 #	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:

@@ -14,19 +14,16 @@ func _ready() -> void:
 	Global.connect("switch_grid_rects", self, "_on_switch_grid_rects")
 	Global.connect("puzzle_generated", self, "_adjust_board_size")
 
-
 func adjust_board_size() -> void:
 	if rect_size.y > rect_size.x:
 		rect_size.y = rect_size.x
 	elif rect_size.x > rect_size.y:
 		rect_size.x = rect_size.y
 
-
 func get_moveable_rect_id():
 	for c in grid_container.get_children():
 		if c is MoveableGridRect:
 			return c.id
-
 
 #TODO: refactor if needed
 func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
@@ -68,7 +65,6 @@ func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
 	
 	Global.emit_signal("grid_rect_switched")
 
-
 func _update_columns_and_rows_for_grid_rects() -> void:
 	var column = 0
 	var row = 0
@@ -85,22 +81,18 @@ func _update_columns_and_rows_for_grid_rects() -> void:
 		else:
 			column += 1
 
-
 func _update_ids_for_grid_rects() -> void:
 	var idx = 0
 	for c in grid_container.get_children():
 		c.id = idx
 		idx += 1
 
-
 func add_grid_rect(grid_rect:GridRect) -> void:
 	grid_container.add_child(grid_rect)
-
 
 func clear_grid_container() -> void:
 	for c in grid_container.get_children():
 		c.free()
-
 
 func set_columns(v) -> void:
 	if not $GridContainer:
@@ -109,7 +101,6 @@ func set_columns(v) -> void:
 	columns = v
 	$GridContainer.columns = columns
 	total_num_of_grid_rects = columns * rows
-
 
 func set_rows(v) -> void:
 	rows = v
