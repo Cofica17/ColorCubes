@@ -152,5 +152,6 @@ dialog_text = "Solved!"
 [connection signal="pressed" from="LevelsCreator/Generate" to="LevelsCreator" method="_on_generate_btn_pressed"]
 [connection signal="pressed" from="LevelsCreator/SaveLevel" to="LevelsCreator" method="_on_save_level_pressed"]
 [connection signal="pressed" from="LevelsCreator/SaveAll" to="LevelsCreator" method="_on_save_all_pressed"]
+[connection signal="pressed" from="LevelsCreator/RegenerateLevel" to="LevelsCreator" method="on_regenerate_level_pressed"]
 [connection signal="item_selected" from="LevelsCreator/Pack" to="LevelsCreator" method="on_pack_selected"]
 [connection signal="item_selected" from="LevelsCreator/Difficulty" to="LevelsCreator" method="on_difficulty_selected"]

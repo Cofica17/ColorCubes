@@ -39,6 +39,7 @@ func _on_LevelsCreator_levels_generated():
 	content = levels_creator.current_generated_levels
 	_generate_puzzle(content[1])
 	Puzzle.content = content
+	$LevelsCreator/LevelNum.text = str(current_level)
 
 func _read_classic_levels_file(pack, difficulty) -> Dictionary:
 	var file = File.new()
@@ -48,21 +49,29 @@ func _read_classic_levels_file(pack, difficulty) -> Dictionary:
 	return content
 
 func _on_LevelNum_text_changed(new_text):
-	if new_text in content:
+	if content.has(new_text):
 		_generate_puzzle(content[new_text])
 
 func _on_Previous_pressed():
+	if not content:
+		return
+	
 	current_level -= 1
 	
 	if current_level < 1:
 		current_level = 1
 	
 	_generate_puzzle(content[current_level])
+	$LevelsCreator/LevelNum.text = str(current_level)
 
 func _on_next_pressed():
+	if not content:
+		return
+	
 	current_level += 1
 	
 	if current_level > 100:
 		current_level = 100
 	
 	_generate_puzzle(content[current_level])
+	$LevelsCreator/LevelNum.text = str(current_level)

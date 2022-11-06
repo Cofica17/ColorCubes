@@ -39,44 +39,49 @@ func generate_classic_levels(config_array:Array) -> Dictionary:
 		var colors = configuration.colors
 		var levels = configuration.levels
 		var gimmicks = configuration.gimmicks
+		var min_amount_of_colors = configuration.min_amount_same_color_cubes
 		
 		for i in levels:
-			result[level] = {
+			generate_classic_level(result, level, board_size, colors, min_amount_of_colors)
+			level += 1
+	
+	return result
+
+func generate_classic_level(result, level, board_size, colors, min_amount_of_colors):
+	result[level] = {
 				"board_size" : board_size,
 				"total_colors" : colors,
 				"grid_rects" : []
 			}
+	
+	var mgr_idx =  randi() % board_size
+	
+	var all_chosen_colors:Array = []
+	
+	while all_chosen_colors.size() != colors:
+		result[level]["grid_rects"] = []
+		
+		for j in board_size:
+			var random_color_idx = randi() % colors
 			
-			var mgr_idx =  randi() % board_size
+			if not all_chosen_colors.has(random_color_idx) and mgr_idx != j:
+				all_chosen_colors.append(random_color_idx)
 			
-			var all_chosen_colors:Array = []
+			var grid_rect := {
+				"color" : random_color_idx,
+				"is_control" : false
+			}
 			
-			while all_chosen_colors.size() != colors:
-				result[level]["grid_rects"] = []
-				
-				for j in board_size:
-					var random_color_idx = randi() % colors
-					
-					if not all_chosen_colors.has(random_color_idx) and mgr_idx != j:
-						all_chosen_colors.append(random_color_idx)
-					
-					var grid_rect := {
-						"color" : random_color_idx,
-						"is_control" : false
-					}
-					
-					if mgr_idx == j:
-						grid_rect.is_control = true
-						grid_rect.color = -1
-					
-					result[level]["grid_rects"].append(grid_rect)
+			if mgr_idx == j:
+				grid_rect.is_control = true
+				grid_rect.color = -1
 			
-			result[level]["grid_rects"] = check_colors_and_adjust(configuration.min_amount_same_color_cubes, result[level]["grid_rects"])
-			
-			for gimmick in gimmicks:
-				result[level]["grid_rects"] = add_gimmick(gimmick, result[level])
-			
-			level += 1
+			result[level]["grid_rects"].append(grid_rect)
+	
+	result[level]["grid_rects"] = check_colors_and_adjust(min_amount_of_colors, result[level]["grid_rects"])
+	
+#	for gimmick in gimmicks:
+#		result[level]["grid_rects"] = add_gimmick(gimmick, result[level])
 	
 	return result
 
@@ -174,3 +179,6 @@ func _on_save_level_pressed():
 	content[get_parent().current_level] = current_generated_levels[get_parent().current_level]
 	save_levels(file_path, content)
 	print("--Successfully saved the level--\nLevel: %s\nPack: %s\nDifficulty: %s\nFile name: %s" % [str(get_parent().current_level), Levels.get_pack_name(current_pack), Levels.get_difficulty_name(current_difficulty), Levels.get_file_name(current_pack, current_difficulty)])
+
+func on_regenerate_level_pressed():
+	pass # Replace with function body.
