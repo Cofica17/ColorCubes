@@ -76,7 +76,6 @@ Scenes="*res://singletons/Scenes.gd"
 
 window/size/width=720
 window/size/height=1280
-window/size/always_on_top=true
 window/size/test_width=400
 window/size/test_height=800
 window/handheld/orientation="portrait"

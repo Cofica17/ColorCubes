@@ -150,10 +150,27 @@ func _on_generate_btn_pressed():
 	emit_signal("levels_generated")
 
 func _on_save_all_pressed():
+	if not current_generated_levels:
+		print("Generate levels first -.-")
+		return
+	
 	var file_name = Levels.get_file_name(current_pack, current_difficulty)
 	var file_path = root_folder + file_name
 	save_levels(file_path, current_generated_levels)
 	print("--Successfully saved all the levels--\nPack: %s\nDifficulty: %s\nFile name: %s" % [Levels.get_pack_name(current_pack), Levels.get_difficulty_name(current_difficulty), Levels.get_file_name(current_pack, current_difficulty)])
 
 func _on_save_level_pressed():
-	pass # Replace with function body.
+	var file_name = Levels.get_file_name(current_pack, current_difficulty)
+	var file_path = root_folder + file_name
+	var file = File.new()
+	var err = file.open(file_path, File.READ)
+	
+	if err != OK or not current_generated_levels:
+		print("Cannot save the level -.-")
+		return
+	
+	var content:Dictionary = JSON.parse(file.get_as_text()).result
+	file.close()
+	content[get_parent().current_level] = current_generated_levels[get_parent().current_level]
+	save_levels(file_path, content)
+	print("--Successfully saved the level--\nLevel: %s\nPack: %s\nDifficulty: %s\nFile name: %s" % [str(get_parent().current_level), Levels.get_pack_name(current_pack), Levels.get_difficulty_name(current_difficulty), Levels.get_file_name(current_pack, current_difficulty)])
