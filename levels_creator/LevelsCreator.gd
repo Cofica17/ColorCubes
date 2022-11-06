@@ -51,6 +51,7 @@ func generate_classic_level(result, level, board_size, colors, min_amount_of_col
 	result[level] = {
 				"board_size" : board_size,
 				"total_colors" : colors,
+				"min_amount_of_same_color_cubes" : min_amount_of_colors,
 				"grid_rects" : []
 			}
 	
@@ -82,8 +83,6 @@ func generate_classic_level(result, level, board_size, colors, min_amount_of_col
 	
 #	for gimmick in gimmicks:
 #		result[level]["grid_rects"] = add_gimmick(gimmick, result[level])
-	
-	return result
 
 func add_gimmick(gimmick, level):
 	match gimmick:
@@ -181,4 +180,11 @@ func _on_save_level_pressed():
 	print("--Successfully saved the level--\nLevel: %s\nPack: %s\nDifficulty: %s\nFile name: %s" % [str(get_parent().current_level), Levels.get_pack_name(current_pack), Levels.get_difficulty_name(current_difficulty), Levels.get_file_name(current_pack, current_difficulty)])
 
 func on_regenerate_level_pressed():
-	pass # Replace with function body.
+	if not current_generated_levels:
+		print("Generate levels first -.-")
+		return
+	
+	var cur_level = get_parent().current_level
+	var level = current_generated_levels[cur_level]
+	generate_classic_level(current_generated_levels, cur_level, level.board_size, level.total_colors, level.min_amount_of_same_color_cubes)
+	emit_signal("levels_generated")

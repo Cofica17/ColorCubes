@@ -37,7 +37,7 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 
 func _on_LevelsCreator_levels_generated():
 	content = levels_creator.current_generated_levels
-	_generate_puzzle(content[1])
+	_generate_puzzle(content[current_level])
 	Puzzle.content = content
 	$LevelsCreator/LevelNum.text = str(current_level)
 
