@@ -13,7 +13,7 @@ var current_level = 1
 
 
 func _ready():
-	Global.current_theme = BoardThemes.desert
+	Global.current_theme = BoardThemes.classic
 	Global.connect("grid_rect_switched", self, "_check_solution")
 	pack_option_btn.connect("item_selected", levels_creator , "on_pack_selected")
 	fill_option_buttons()
@@ -36,8 +36,8 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.call_deferred("adjust_board_size")
 
 func _on_LevelsCreator_levels_generated():
-	content = _read_classic_levels_file(0,0)
-	_generate_puzzle(content["1"])
+	content = levels_creator.current_generated_levels
+	_generate_puzzle(content[1])
 	Puzzle.content = content
 
 func _read_classic_levels_file(pack, difficulty) -> Dictionary:
@@ -57,7 +57,7 @@ func _on_Previous_pressed():
 	if current_level < 1:
 		current_level = 1
 	
-	_generate_puzzle(content[str(current_level)])
+	_generate_puzzle(content[current_level])
 
 func _on_next_pressed():
 	current_level += 1
@@ -65,4 +65,4 @@ func _on_next_pressed():
 	if current_level > 100:
 		current_level = 100
 	
-	_generate_puzzle(content[str(current_level)])
+	_generate_puzzle(content[current_level])

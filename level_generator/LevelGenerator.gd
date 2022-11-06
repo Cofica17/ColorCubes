@@ -8,7 +8,6 @@ func generate_puzzle(grid:Grid, pack:int, puzzle:Dictionary) -> void:
 		Levels.PACKS.CLASSIC:
 			generate_classic_puzzle(grid, puzzle)
 
-
 func generate_classic_puzzle(grid:Grid, puzzle:Dictionary) -> void:
 	var idx = 0
 	
@@ -37,10 +36,10 @@ func generate_classic_puzzle(grid:Grid, puzzle:Dictionary) -> void:
 		if not grid_rect_data.is_control:
 			grid_rect.set_color(Global.current_theme.colors[int(grid_rect_data.color)])
 		
-		if grid_rect_data.has("color_space"):
-			if not grid_rect_data.is_control:
-				grid_rect.set_exact_space_color(Global.current_theme.colors[int(grid_rect_data.color_space)])
-			grid_rect.exact_space.show()
+#		if grid_rect_data.has("color_space"):
+#			if not grid_rect_data.is_control:
+#				grid_rect.set_exact_space_color(Global.current_theme.colors[int(grid_rect_data.color_space)])
+#			grid_rect.exact_space.show()
 		
 		if (board_size % (column + 1)) == 0 and not column == 0:
 			row += 1

@@ -5,6 +5,7 @@ signal levels_generated
 var root_folder = "res://levels_jsons/"
 var current_pack = Levels.PACKS.CLASSIC
 var current_difficulty = Levels.DIFFICULTY.LEVEL_1
+var current_generated_levels
 
 func _ready():
 	randomize()
@@ -17,7 +18,6 @@ func on_difficulty_selected(item):
 
 func generate_levels(pack, difficulty) -> void:
 	var configuration = LevelsCreatorConfiguration.get_configuration(pack, difficulty)
-	var file_name = Levels.get_file_name(pack, difficulty)
 	var generated_levels
 	
 	match pack:
@@ -27,12 +27,7 @@ func generate_levels(pack, difficulty) -> void:
 	if not generated_levels:
 		return
 	
-	var file_path = root_folder + file_name
-	
-	var file = File.new()
-	file.open(file_path, File.WRITE)
-	file.store_string(JSON.print(generated_levels))
-	file.close()
+	current_generated_levels = generated_levels
 
 func generate_classic_levels(config_array:Array) -> Dictionary:
 	var result := {}
@@ -144,6 +139,21 @@ func _get_color_with_max_sum(color_counter) -> int:
 			idx = c
 	return idx
 
+func save_levels(file_path, content:Dictionary):
+	var file = File.new()
+	file.open(file_path, File.WRITE)
+	file.store_string(JSON.print(content))
+	file.close()
+
 func _on_generate_btn_pressed():
 	generate_levels(current_pack, current_difficulty)
 	emit_signal("levels_generated")
+
+func _on_save_all_pressed():
+	var file_name = Levels.get_file_name(current_pack, current_difficulty)
+	var file_path = root_folder + file_name
+	save_levels(file_path, current_generated_levels)
+	print("--Successfully saved all the levels--\nPack: %s\nDifficulty: %s\nFile name: %s" % [Levels.get_pack_name(current_pack), Levels.get_difficulty_name(current_difficulty), Levels.get_file_name(current_pack, current_difficulty)])
+
+func _on_save_level_pressed():
+	pass # Replace with function body.
