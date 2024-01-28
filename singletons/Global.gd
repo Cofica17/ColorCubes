@@ -31,6 +31,44 @@ enum DIRECTION {
 	UP
 }
 
+var game_data = {}
+
+func _ready():
+	load_game()
+
+func load_game():
+	var file = File.new()
+	var err = file.open("user://game_data.json", File.READ_WRITE)
+	if err == OK:
+		var file_data = file.get_as_text()
+		game_data = JSON.parse(file_data).result
+		print(game_data)
+		file.close()
+	else:
+		game_data = {
+			Levels.PACKS.CLASSIC: default_pack_dict()
+		}
+		save_game()
+
+func save_game():
+	var new_file = File.new()
+	new_file.open("user://game_data.json", File.WRITE)
+	new_file.store_string(to_json(game_data))
+	new_file.close()
+
+func default_pack_dict():
+	return {
+			Levels.DIFFICULTY.LEVEL_1 : [],
+			Levels.DIFFICULTY.LEVEL_2 : [],
+			Levels.DIFFICULTY.LEVEL_3 : []
+		}
+
+func level_finished():
+	game_data[str(Puzzle.pack)][str(Puzzle.difficulty)].append(Puzzle.level)
+	save_game()
+
+func get_levels_array_from_game_data():
+	return game_data[str(Puzzle.pack)][str(Puzzle.difficulty)]
 
 func initiate_switch_grid_rects() -> void:
 	switch_grid_rects_initiated = true

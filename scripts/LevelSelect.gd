@@ -19,8 +19,14 @@ func _on_new_level_chosen(new_level, because_of_difficulty_change=false) -> void
 		hide()
 
 func _set_solved_and_unsolved_colors() -> void:
+	var i = 1
+	var levels_cleared = Global.get_levels_array_from_game_data()
 	for c in grid.get_children():
-		c.set_color(Puzzle.unsolved_color)
+		if i in levels_cleared:
+			c.set_color(Puzzle.solved_color)
+		else:
+			c.set_color(Puzzle.unsolved_color)
+		i += 1
 
 func fill_levels(max_level) -> void:
 	for i in max_level:
@@ -34,7 +40,6 @@ func _on_ChangeBtn_pressed():
 func _on_difficulty_changed():
 	difficulty_bg.hide()
 	difficulty_label.text = Levels.get_current_difficulty()
-
 
 func _on_CloseBtn_pressed():
 	hide()

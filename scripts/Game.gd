@@ -74,11 +74,20 @@ func _check_solution() -> void:
 		
 		if Puzzle.level == Puzzle.max_levels:
 			$LevelClearedContainer/Popup/Next.hide()
+		
+		Global.level_finished()
 
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()
 	LevelGenerator.generate_puzzle(grid, Puzzle.pack, puzzle)
 	grid.call_deferred("adjust_board_size")
+
+func save_game():
+	return
+	#	var file = File.new()
+	#	file.open(score_file, File.WRITE)
+	#	file.store_var(highscore)
+	#	file.close()
 
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
 #	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:

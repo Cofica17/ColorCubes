@@ -72,6 +72,10 @@ LevelGenerator="*res://level_generator/LevelGenerator.gd"
 Puzzle="*res://singletons/Puzzle.gd"
 Scenes="*res://singletons/Scenes.gd"
 
+[debug]
+
+settings/physics_interpolation/enable_warnings=false
+
 [display]
 
 window/size/width=720
