@@ -1,28 +1,48 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/fonts/autowide/Audiowide-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/fonts/quicksand/Quicksand-Light.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Light.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/arrow.png" type="Texture" id=5]
-[ext_resource path="res://assets/header.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/poppins/Poppins-SemiBold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/Home.gd" type="Script" id=7]
 [ext_resource path="res://scenes/LevelSelect.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/DifficultyPopup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=10]
 
-[sub_resource type="DynamicFont" id=1]
-size = 58
-font_data = ExtResource( 3 )
+[sub_resource type="DynamicFont" id=11]
+size = 102
+font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 33
+[sub_resource type="DynamicFont" id=14]
+size = 32
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 32
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="DynamicFont" id=4]
-size = 40
-font_data = ExtResource( 2 )
+[sub_resource type="DynamicFont" id=16]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 72
@@ -42,141 +62,165 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": "																			11	xy<"
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1.88776
 margin_bottom = -1.8877
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Header" type="Control" parent="."]
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="Header"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 6
+color = Color( 0, 0, 0, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.25
-anchor_top = 0.25
-anchor_right = 0.75
-anchor_bottom = 0.37
-margin_right = -6.10352e-05
-custom_constants/separation = 15
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anchor_left = 0.02
+anchor_top = 0.05
+anchor_right = 0.98
+anchor_bottom = 0.95
+custom_constants/separation = 150
+alignment = 1
 
-[node name="PackLabel" type="Label" parent="VBoxContainer"]
-margin_right = 359.0
-margin_bottom = 73.0
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Classic Pack"
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_top = 9.0
+margin_right = 691.0
+margin_bottom = 153.0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Qubes"
 align = 1
+valign = 1
 
-[node name="DifficultyBtn" type="Button" parent="VBoxContainer"]
-margin_top = 88.0
-margin_right = 359.0
-margin_bottom = 130.0
-custom_colors/font_color_disabled = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_hover = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_pressed = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_fonts/font = SubResource( 3 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 303.0
+margin_right = 691.0
+margin_bottom = 349.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="PackLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 210.0
+margin_bottom = 46.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Classic "
+align = 1
+valign = 1
+
+[node name="Dash" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 235.0
+margin_right = 254.0
+margin_bottom = 46.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="DifficultyLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 279.0
+margin_right = 469.0
+margin_bottom = 46.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 15 )
 custom_styles/normal = SubResource( 2 )
-text = "INTRODUCTION"
+text = "Introduction"
+align = 1
+valign = 1
 
-[node name="Grid" parent="." instance=ExtResource( 4 )]
-anchor_left = 0.22
-anchor_top = 0.38
-anchor_right = 0.78
-anchor_bottom = 0.68
+[node name="Dash2" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 494.0
+margin_right = 512.0
+margin_bottom = 46.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 15 )
+custom_styles/normal = SubResource( 2 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="PuzzleLevel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 537.0
+margin_right = 607.0
+margin_bottom = 46.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "1/100"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 499.0
+margin_right = 691.0
+margin_bottom = 899.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="Previous" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+material = SubResource( 13 )
+margin_left = 15.0
+margin_top = 175.0
+margin_right = 65.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 18, 32 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+flip_h = true
+
+[node name="Grid" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 4 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 145.0
+margin_top = 0.0
+margin_right = 545.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 400, 400 )
+size_flags_horizontal = 0
+size_flags_vertical = 4
 columns = 4
 rows = 4
 
-[node name="GridButton" type="Button" parent="Grid"]
+[node name="GridButton" type="Button" parent="VBoxContainer/HBoxContainer2/Grid"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PuzzleLevel" type="Label" parent="."]
-anchor_left = 0.3
-anchor_top = 0.72
-anchor_right = 0.7
-anchor_bottom = 0.758
-margin_left = 0.169861
-margin_top = -0.499573
-margin_right = 0.16983
-margin_bottom = -9.8595
-size_flags_vertical = 1
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "1/100"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Previous" type="TextureButton" parent="."]
-anchor_left = 0.05
-anchor_top = 0.5
-anchor_right = 0.1
-anchor_bottom = 0.55
-rect_rotation = 180.0
-rect_pivot_offset = Vector2( 18, 32 )
+[node name="Next" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+material = SubResource( 13 )
+margin_left = 625.0
+margin_top = 175.0
+margin_right = 675.0
+margin_bottom = 225.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 8
+size_flags_vertical = 4
 texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 5 )
-texture_focused = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="Next" type="TextureButton" parent="."]
-anchor_left = 0.9
-anchor_top = 0.5
-anchor_right = 0.95
-anchor_bottom = 0.55
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 5 )
-texture_disabled = ExtResource( 5 )
-texture_focused = ExtResource( 5 )
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Play" type="Button" parent="."]
-anchor_left = 0.3
-anchor_top = 0.8
-anchor_right = 0.7
-anchor_bottom = 0.872
-margin_top = -0.119995
-margin_right = -3.05176e-05
-margin_bottom = -28.4401
-custom_colors/font_color_disabled = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_hover = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_pressed = Color( 0.223529, 0.223529, 0.266667, 1 )
+[node name="Play" type="Button" parent="VBoxContainer"]
+margin_top = 1049.0
+margin_right = 691.0
+margin_bottom = 1142.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 10 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
@@ -184,29 +228,6 @@ custom_styles/focus = SubResource( 7 )
 custom_styles/disabled = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 text = "Play"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ExitLevelSelect" type="Button" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LevelSelect" parent="." instance=ExtResource( 8 )]
 visible = false
-anchor_left = 0.08
-anchor_top = 0.225
-anchor_right = 0.92
-anchor_bottom = 0.9
-
-[node name="ChooseDifficultyPopup" parent="." instance=ExtResource( 9 )]
-visible = false
-anchor_left = 0.05
-anchor_top = 0.32
-anchor_right = 0.95
-anchor_bottom = 0.6

@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Scrolling.gd" type="Script" id=2]
 [ext_resource path="res://scripts/LevelSelect.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scenes/DifficultyPopup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/close.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -13,22 +16,66 @@ corner_radius_bottom_left = 20
 shadow_color = Color( 0, 0, 0, 0.16 )
 shadow_size = 10
 
+[sub_resource type="DynamicFont" id=2]
+size = 58
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_right = 40.0
 draw_center = false
 
-[sub_resource type="DynamicFont" id=2]
-size = 58
-font_data = ExtResource( 1 )
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/color = Color( 1, 1, 1, 1 )
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -1432.85, -39.1993 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -38,25 +85,104 @@ margin_top = 1.88776
 margin_right = 1.8877
 margin_bottom = 1.8877
 custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.05
+margin_right = -6.10352e-05
+margin_bottom = 174.0
+custom_constants/separation = 25
+
+[node name="Level" type="Label" parent="VBoxContainer"]
+margin_right = 648.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Level"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 107.0
+margin_right = 648.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="PackLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 44.0
+margin_top = 4.0
+margin_right = 170.0
+margin_bottom = 50.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Classic "
+align = 1
+valign = 1
+
+[node name="Dash" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 195.0
+margin_top = 4.0
+margin_right = 214.0
+margin_bottom = 50.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "-"
+align = 1
+valign = 1
+
+[node name="DifficultyLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 239.0
+margin_top = 4.0
+margin_right = 429.0
+margin_bottom = 50.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "Introduction"
+align = 1
+valign = 1
+
+[node name="ChangeBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 454.0
+margin_right = 603.0
+margin_bottom = 55.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "Change"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchor_left = 0.1
-anchor_top = 0.18
-anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_left = 0.05
+anchor_top = 0.236
+anchor_right = 0.95
+anchor_bottom = 0.95
+margin_top = -0.0800171
+margin_right = -6.10352e-05
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/bg = SubResource( 3 )
 scroll_horizontal_enabled = false
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-margin_right = 536.0
-margin_bottom = 921.6
+margin_right = 608.0
+margin_bottom = 914.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 25
@@ -66,19 +192,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level" type="Label" parent="."]
-anchor_top = 0.02
+[node name="DifficultyBG" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
-anchor_bottom = 0.1
-margin_right = -1.0
-margin_bottom = 0.0399933
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-text = "Level"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color( 0, 0, 0, 0.729412 )
 
+[node name="ChooseDifficultyPopup" parent="DifficultyBG" instance=ExtResource( 5 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -325.0
+margin_top = -200.0
+margin_right = 325.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 650, 400 )
+
+[node name="CloseBtn" type="TextureButton" parent="."]
+material = SubResource( 13 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -106.0
+margin_top = 30.0
+margin_right = -36.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ChangeBtn" to="." method="_on_ChangeBtn_pressed"]
 [connection signal="scroll_started" from="ScrollContainer" to="ScrollContainer" method="_on_ScrollContainer_scroll_started"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]

@@ -14,6 +14,10 @@ var flicked = false
 
 var timer
 
+func _ready():
+	rect_position.x += get_v_scrollbar().rect_size.x
+	get_v_scrollbar().rect_scale.x = 0
+
 func _input(ev):
 	if ev is InputEventMouseButton:
 		if ev.pressed:

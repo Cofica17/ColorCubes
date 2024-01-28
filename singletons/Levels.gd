@@ -30,3 +30,6 @@ func get_pack_name(pack):
 
 func get_difficulty_name(difficulty):
 	return difficulty_level_names[difficulty]
+
+func get_current_difficulty():
+	return get_difficulty_name(Puzzle.difficulty)

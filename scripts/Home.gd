@@ -1,16 +1,14 @@
 extends Control
 tool
 
-onready var grid:Grid = get_node("Grid")
-onready var previous:TextureButton = $Previous
-onready var next:TextureButton = $Next
-onready var puzzle_level:Label = $PuzzleLevel
-onready var play:Button = $Play
-onready var grid_btn:Button = $Grid/GridButton
+onready var grid:Grid = $VBoxContainer/HBoxContainer2/Grid
+onready var previous:TextureButton = $VBoxContainer/HBoxContainer2/Previous
+onready var next:TextureButton = $VBoxContainer/HBoxContainer2/Next
+onready var puzzle_level:Label = $VBoxContainer/HBoxContainer/PuzzleLevel
+onready var play:Button = $VBoxContainer/Play
+onready var grid_btn:Button = $VBoxContainer/HBoxContainer2/Grid/GridButton
 onready var level_select:Control = $LevelSelect
-onready var exit_level_select:Button = $ExitLevelSelect
-onready var choose_difficulty_popup:Panel = $ChooseDifficultyPopup
-onready var difficulty_btn:Button = $VBoxContainer/DifficultyBtn
+onready var difficulty_label:Label = $VBoxContainer/HBoxContainer/DifficultyLabel
 
 var current_level = 1 
 var max_levels = 100
@@ -23,41 +21,33 @@ func _ready():
 	grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
 	Global.connect("level_chosen", self, "_on_level_chosen")
 	Puzzle.connect("difficulty_changed", self, "_on_difficulty_changed")
-	exit_level_select.connect("pressed", self, "_exit_level_select")
-	difficulty_btn.connect("pressed", self, "_on_difficulty_btn_pressed")
+	#difficulty_btn.connect("pressed", self, "_on_difficulty_btn_pressed")
 	
 	Global.current_theme = BoardThemes.classic
 	_set_puzzle_content()
 	fill_level_select()
-	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
+	difficulty_label.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
 	
 	Global.emit_signal("level_chosen", Puzzle.level)
 
-func _on_difficulty_btn_pressed() -> void:
-	choose_difficulty_popup.show()
-
 func _on_difficulty_changed() -> void:
-	choose_difficulty_popup.hide()
-	difficulty_btn.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
+	difficulty_label.text = Levels.get_current_difficulty()
 	_set_puzzle_content()
-	Global.emit_signal("level_chosen", 1)
+	Global.emit_signal("level_chosen", 1 , true)
 
-func _on_level_chosen(new_level:int) -> void:
+func _on_level_chosen(new_level:int, because_of_difficulty_change=false) -> void:
 	current_level = new_level
 	_set_puzzle_level() 
 	_generate_puzzle(Puzzle.content[str(current_level)])
-	_exit_level_select()
 
 func fill_level_select() -> void:
 	level_select.fill_levels(max_levels)
 
 func _exit_level_select() -> void:
 	level_select.hide()
-	exit_level_select.hide()
 
 func _on_grid_btn_pressed() -> void:
 	level_select.show()
-	exit_level_select.show()
 
 func _on_play_pressed() -> void:
 	Puzzle.level = current_level

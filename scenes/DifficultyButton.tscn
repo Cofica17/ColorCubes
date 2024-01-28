@@ -1,29 +1,42 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=1]
-
-[sub_resource type="StyleBoxEmpty" id=1]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [node name="Button" type="Button"]
 margin_top = 24.0
 margin_right = 719.0
 margin_bottom = 84.0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color_disabled = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_hover = Color( 0.223529, 0.223529, 0.266667, 1 )
-custom_colors/font_color_pressed = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
 text = "Introduction"
-__meta__ = {
-"_edit_use_anchors_": false
-}

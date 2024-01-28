@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/fonts/quicksand/Quicksand-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/LevelGridRect.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -28,21 +28,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LevelNumber" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.223529, 0.223529, 0.266667, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "1"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
