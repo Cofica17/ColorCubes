@@ -84,13 +84,15 @@ func default_pack_dict():
 		}
 
 func level_finished():
-	game_data[str(Puzzle.pack)][str(Puzzle.difficulty)].append(Puzzle.level)
+	if not Puzzle.level in game_data.values()[Puzzle.pack].values()[Puzzle.difficulty]:
+		game_data.values()[Puzzle.pack].values()[Puzzle.difficulty].append(Puzzle.level)
 	save_game()
 
 func get_levels_array_from_game_data():
 	if game_data.empty():
 		return []
-	return game_data[str(Puzzle.pack)][str(Puzzle.difficulty)]
+	#print(game_data)
+	return game_data.values()[Puzzle.pack].values()[Puzzle.difficulty]
 
 func initiate_switch_grid_rects() -> void:
 	switch_grid_rects_initiated = true

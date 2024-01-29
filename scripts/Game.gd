@@ -12,13 +12,15 @@ onready var level_cleared_container:Control = $LevelClearedContainer
 onready var lvl_solved_popup:Panel = $LevelClearedContainer/Popup
 onready var shop = $Shop
 onready var audio = $AudioStreamPlayer
+onready var switch_audio = $AudioStreamPlayer2
+onready var star_particles = $LevelClearedContainer/StarParticles
 
 var time_elapsed = 0
 
 func _ready():
 	audio.stream = Global.cur_song
 	audio.play(Global.audio_position)
-	Global.connect("grid_rect_switched", self, "_check_solution")
+	Global.connect("grid_rect_switched", self, "on_grid_rect_switched")
 	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 	pack.text = Levels.pack_names[Puzzle.pack] + " Pack"
 	difficulty.text = Levels.difficulty_level_names[Puzzle.difficulty]
@@ -36,6 +38,7 @@ func _process(delta):
 
 func _on_next_level_pressed() -> void:
 	level_cleared_container.hide()
+	star_particles.emitting = false
 	Global.emit_signal("level_chosen", Puzzle.level + 1)
 	time_elapsed = -1
 	_update_time_elapsed()
@@ -75,6 +78,10 @@ func _update_time_elapsed() -> void:
 	
 	time_elapsed_lbl.text = minutes_str + ":" + seconds_str
 
+func on_grid_rect_switched():
+	_check_solution()
+	switch_audio.play()
+
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):
 		yield(get_tree().create_timer(0.3), "timeout")
@@ -85,6 +92,8 @@ func _check_solution() -> void:
 			$LevelClearedContainer/Popup/Next.hide()
 		
 		Global.level_finished()
+		star_particles.restart()
+		star_particles.emitting = true
 
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()

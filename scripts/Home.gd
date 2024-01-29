@@ -89,7 +89,6 @@ func _on_LevelSelectBtn_pressed():
 	level_select.show()
 
 func _on_AudioStreamPlayer_finished():
-	print("heloo")
 	Global.set_next_song()
 	audio.stream = Global.cur_song
 	audio.play()

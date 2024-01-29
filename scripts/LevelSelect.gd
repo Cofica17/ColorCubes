@@ -43,3 +43,7 @@ func _on_difficulty_changed():
 
 func _on_CloseBtn_pressed():
 	hide()
+
+
+func _on_ChooseDifficultyBGBtn_pressed():
+	difficulty_bg.hide()
