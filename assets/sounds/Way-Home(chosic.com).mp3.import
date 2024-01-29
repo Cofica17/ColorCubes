@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Way-Home(chosic.com).mp3-beedeb024651fc1559e06f606a31c8cc.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Way-Home(chosic.com).mp3"
+dest_files=[ "res://.import/Way-Home(chosic.com).mp3-beedeb024651fc1559e06f606a31c8cc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

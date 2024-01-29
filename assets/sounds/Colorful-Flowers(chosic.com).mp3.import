@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Colorful-Flowers(chosic.com).mp3-70864149eec7f583e6661ac701486f32.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Colorful-Flowers(chosic.com).mp3"
+dest_files=[ "res://.import/Colorful-Flowers(chosic.com).mp3-70864149eec7f583e6661ac701486f32.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

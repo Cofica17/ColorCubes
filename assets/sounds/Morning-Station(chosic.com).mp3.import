@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Morning-Station(chosic.com).mp3-764239a802e6d515e84be18eb737650f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Morning-Station(chosic.com).mp3"
+dest_files=[ "res://.import/Morning-Station(chosic.com).mp3-764239a802e6d515e84be18eb737650f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

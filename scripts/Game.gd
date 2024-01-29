@@ -11,10 +11,13 @@ onready var home:TextureButton = $Home
 onready var level_cleared_container:Control = $LevelClearedContainer
 onready var lvl_solved_popup:Panel = $LevelClearedContainer/Popup
 onready var shop = $Shop
+onready var audio = $AudioStreamPlayer
 
 var time_elapsed = 0
 
 func _ready():
+	audio.stream = Global.cur_song
+	audio.play(Global.audio_position)
 	Global.connect("grid_rect_switched", self, "_check_solution")
 	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 	pack.text = Levels.pack_names[Puzzle.pack] + " Pack"
@@ -27,6 +30,10 @@ func _ready():
 	lvl_solved_popup.connect("home_pressed", self, "_on_home_pressed")
 	lvl_solved_popup.connect("restart_pressed", self, "_on_restart_pressed")
 
+func _process(delta):
+	if audio.get_playback_position() >= audio.stream.get_length() * 0.99:
+		audio.emit_signal("finished")
+
 func _on_next_level_pressed() -> void:
 	level_cleared_container.hide()
 	Global.emit_signal("level_chosen", Puzzle.level + 1)
@@ -37,6 +44,7 @@ func _on_next_level_pressed() -> void:
 	_generate_puzzle(Puzzle.content[str(Puzzle.level)])
 
 func _on_home_pressed() -> void:
+	Global.audio_position = audio.get_playback_position()
 	get_tree().change_scene(Scenes.HomeScene)
 
 func _on_restart_pressed() -> void:
@@ -88,3 +96,8 @@ func _on_BgBtn_pressed():
 
 func _on_ShopButton_pressed():
 	shop.show()
+
+func _on_AudioStreamPlayer_finished():
+	Global.set_next_song()
+	audio.stream = Global.cur_song
+	audio.play()

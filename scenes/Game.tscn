@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shopping-cart.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://scripts/Popup.gd" type="Script" id=11]
+[ext_resource path="res://assets/sounds/Colorful-Flowers(chosic.com).mp3" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
@@ -263,5 +264,9 @@ custom_styles/focus = SubResource( 19 )
 custom_styles/disabled = SubResource( 20 )
 custom_styles/normal = SubResource( 21 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
 [connection signal="pressed" from="ShopButton" to="." method="_on_ShopButton_pressed"]
 [connection signal="pressed" from="Shop/BgBtn" to="." method="_on_BgBtn_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

@@ -1,5 +1,13 @@
 extends Node
 
+var music = [
+	load("res://assets/sounds/Colorful-Flowers(chosic.com).mp3"),
+	load("res://assets/sounds/Memories-of-Spring(chosic.com).mp3"),
+	load("res://assets/sounds/Morning-Station(chosic.com).mp3"),
+	load("res://assets/sounds/Way-Home(chosic.com).mp3"),
+	load("res://assets/sounds/When-I-Was-A-Boy(chosic.com).mp3")
+	]
+
 var RNG = RandomNumberGenerator.new()
 var current_seed
 
@@ -24,6 +32,9 @@ var switch_grid_rects_initiated:bool = false
 
 var one_touch_move = true
 
+var audio_position = 0.0
+var cur_song = 0
+
 enum DIRECTION {
 	LEFT,
 	RIGHT,
@@ -34,7 +45,16 @@ enum DIRECTION {
 var game_data = {}
 
 func _ready():
+	RNG.randomize()
+	cur_song = music[RNG.randi_range(0, music.size()-1)]
 	load_game()
+
+func set_next_song():
+	var idx = music.find(cur_song)
+	idx += 1
+	if idx >= music.size():
+		idx = 0
+	cur_song = music[idx]
 
 func load_game():
 	var file = File.new()

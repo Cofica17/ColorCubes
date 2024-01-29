@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/When-I-Was-A-Boy(chosic.com).mp3-dfac80be597ee0ebeb1ad81ba79dfe10.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/When-I-Was-A-Boy(chosic.com).mp3"
+dest_files=[ "res://.import/When-I-Was-A-Boy(chosic.com).mp3-dfac80be597ee0ebeb1ad81ba79dfe10.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Memories-of-Spring(chosic.com).mp3-4c186ce9045ab5a18331ae8e41d295ef.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Memories-of-Spring(chosic.com).mp3"
+dest_files=[ "res://.import/Memories-of-Spring(chosic.com).mp3-4c186ce9045ab5a18331ae8e41d295ef.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

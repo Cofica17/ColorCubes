@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
+[ext_resource path="res://assets/sounds/Colorful-Flowers(chosic.com).mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Light.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=4]
@@ -265,4 +266,13 @@ text = "Play"
 [node name="LevelSelect" parent="." instance=ExtResource( 8 )]
 visible = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/LevelSelectBtn" to="." method="_on_LevelSelectBtn_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

@@ -9,12 +9,14 @@ onready var play:Button = $VBoxContainer/Play
 onready var grid_btn:Button = $VBoxContainer/HBoxContainer2/Grid/GridButton
 onready var level_select:Control = $LevelSelect
 onready var difficulty_label:Label = $VBoxContainer/VBoxContainer/HBoxContainer/DifficultyLabel
+onready var audio = $AudioStreamPlayer
 
 var current_level = 1 
 var max_levels = 100
 
-
 func _ready():
+	audio.stream = Global.cur_song
+	audio.play(Global.audio_position)
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
 	play.connect("pressed", self, "_on_play_pressed")
@@ -51,6 +53,7 @@ func _on_grid_btn_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	Puzzle.level = current_level
+	Global.audio_position = audio.get_playback_position()
 	get_tree().change_scene(Scenes.GameScene)
 
 func _on_previous_pressed() -> void:
@@ -85,6 +88,16 @@ func _set_puzzle_content() -> void:
 func _on_LevelSelectBtn_pressed():
 	level_select.show()
 
+func _on_AudioStreamPlayer_finished():
+	print("heloo")
+	Global.set_next_song()
+	audio.stream = Global.cur_song
+	audio.play()
+
+func _process(delta):
+	if audio.get_playback_position() >= audio.stream.get_length() * 0.99:
+		audio.emit_signal("finished")
+
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
 #	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
 #		num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
@@ -112,5 +125,3 @@ func _on_LevelSelectBtn_pressed():
 #			counter += 1
 #
 #		excluding_icons.append(rnd_rect_icon)
-
-
