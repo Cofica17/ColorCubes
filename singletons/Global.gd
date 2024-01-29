@@ -48,6 +48,13 @@ func _ready():
 	RNG.randomize()
 	cur_song = music[RNG.randi_range(0, music.size()-1)]
 	load_game()
+	Puzzle.change_difficulty(Global.game_data.difficulty)
+	emit_signal("level_chosen", game_data.level)
+	connect("level_chosen", self, "on_level_chosen")
+
+func on_level_chosen(lvl, v=false):
+	game_data.level = lvl
+	save_game()
 
 func set_next_song():
 	var idx = music.find(cur_song)
@@ -62,11 +69,12 @@ func load_game():
 	if err == OK:
 		var file_data = file.get_as_text()
 		game_data = JSON.parse(file_data).result
-		print(game_data)
 		file.close()
 	else:
 		game_data = {
-			Levels.PACKS.CLASSIC: default_pack_dict()
+			Levels.PACKS.CLASSIC: default_pack_dict(),
+			"difficulty" : 0,
+			"level" : 1,
 		}
 		save_game()
 

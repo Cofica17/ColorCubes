@@ -1,5 +1,4 @@
 extends Control
-tool
 
 onready var grid:Grid = get_node("Grid")
 onready var pack:Label = $VBoxContainer/Pack
@@ -94,6 +93,8 @@ func _check_solution() -> void:
 		Global.level_finished()
 		star_particles.restart()
 		star_particles.emitting = true
+		Global.game_data.level = min(Puzzle.level + 1, 100)
+		Global.save_game()
 
 func _generate_puzzle(puzzle:Dictionary) -> void:
 	grid.clear_grid_container()

@@ -30,7 +30,6 @@ anchor_right = 0.111
 anchor_bottom = 0.062
 margin_right = 0.0799942
 margin_bottom = 0.639999
-rect_min_size = Vector2( 40, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )

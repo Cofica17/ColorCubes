@@ -1,5 +1,4 @@
 extends Control
-tool
 
 onready var grid:Grid = $VBoxContainer/HBoxContainer2/Grid
 onready var previous:TextureButton = $VBoxContainer/HBoxContainer2/Previous
@@ -30,12 +29,14 @@ func _ready():
 	fill_level_select()
 	difficulty_label.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
 	
-	Global.emit_signal("level_chosen", Puzzle.level)
+	Global.emit_signal("level_chosen", Global.game_data.level)
 
 func _on_difficulty_changed() -> void:
 	difficulty_label.text = Levels.get_current_difficulty()
 	_set_puzzle_content()
 	Global.emit_signal("level_chosen", 1 , true)
+	Global.game_data.difficulty = Puzzle.difficulty
+	Global.save_game()
 
 func _on_level_chosen(new_level:int, because_of_difficulty_change=false) -> void:
 	current_level = new_level
