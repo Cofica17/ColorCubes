@@ -96,7 +96,7 @@ margin_bottom = 174.0
 custom_constants/separation = 25
 
 [node name="Level" type="Label" parent="VBoxContainer"]
-margin_right = 648.0
+margin_right = 559.0
 margin_bottom = 82.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -109,7 +109,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 107.0
-margin_right = 648.0
+margin_right = 559.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -117,9 +117,8 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="PackLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 44.0
 margin_top = 4.0
-margin_right = 170.0
+margin_right = 126.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -129,9 +128,9 @@ align = 1
 valign = 1
 
 [node name="Dash" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 195.0
+margin_left = 151.0
 margin_top = 4.0
-margin_right = 214.0
+margin_right = 170.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -141,9 +140,9 @@ align = 1
 valign = 1
 
 [node name="DifficultyLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 239.0
+margin_left = 195.0
 margin_top = 4.0
-margin_right = 429.0
+margin_right = 385.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -154,8 +153,8 @@ align = 1
 valign = 1
 
 [node name="ChangeBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 454.0
-margin_right = 603.0
+margin_left = 410.0
+margin_right = 559.0
 margin_bottom = 55.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -181,8 +180,8 @@ scroll_horizontal_enabled = false
 script = ExtResource( 2 )
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-margin_right = 608.0
-margin_bottom = 914.0
+margin_right = 500.0
+margin_bottom = 856.88
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 25
@@ -204,11 +203,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -325.0
+margin_left = -225.0
 margin_top = -200.0
-margin_right = 325.0
+margin_right = 225.0
 margin_bottom = 200.0
-rect_min_size = Vector2( 650, 400 )
+rect_min_size = Vector2( 450, 400 )
 
 [node name="CloseBtn" type="TextureButton" parent="."]
 material = SubResource( 13 )

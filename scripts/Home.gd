@@ -4,11 +4,11 @@ tool
 onready var grid:Grid = $VBoxContainer/HBoxContainer2/Grid
 onready var previous:TextureButton = $VBoxContainer/HBoxContainer2/Previous
 onready var next:TextureButton = $VBoxContainer/HBoxContainer2/Next
-onready var puzzle_level:Label = $VBoxContainer/HBoxContainer/PuzzleLevel
+onready var puzzle_level:Label = $VBoxContainer/VBoxContainer/HBoxContainer/PuzzleLevel
 onready var play:Button = $VBoxContainer/Play
 onready var grid_btn:Button = $VBoxContainer/HBoxContainer2/Grid/GridButton
 onready var level_select:Control = $LevelSelect
-onready var difficulty_label:Label = $VBoxContainer/HBoxContainer/DifficultyLabel
+onready var difficulty_label:Label = $VBoxContainer/VBoxContainer/HBoxContainer/DifficultyLabel
 
 var current_level = 1 
 var max_levels = 100
@@ -18,7 +18,7 @@ func _ready():
 	previous.connect("pressed", self, "_on_previous_pressed")
 	next.connect("pressed", self, "_on_next_pressed")
 	play.connect("pressed", self, "_on_play_pressed")
-	grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
+	#grid_btn.connect("pressed", self, "_on_grid_btn_pressed")
 	Global.connect("level_chosen", self, "_on_level_chosen")
 	Puzzle.connect("difficulty_changed", self, "_on_difficulty_changed")
 	#difficulty_btn.connect("pressed", self, "_on_difficulty_btn_pressed")
@@ -82,6 +82,9 @@ func _set_puzzle_content() -> void:
 	file.close()
 	Puzzle.content = content
 
+func _on_LevelSelectBtn_pressed():
+	level_select.show()
+
 #func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
 #	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
 #		num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
@@ -109,3 +112,5 @@ func _set_puzzle_content() -> void:
 #			counter += 1
 #
 #		excluding_icons.append(rnd_rect_icon)
+
+

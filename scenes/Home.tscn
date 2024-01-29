@@ -1,6 +1,5 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/fonts/autowide/Audiowide-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Light.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=4]
@@ -11,22 +10,43 @@
 [ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="DynamicFont" id=11]
-size = 102
+size = 68
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=14]
-size = 32
+size = 28
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=15]
-size = 32
+size = 28
 font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="DynamicFont" id=16]
-size = 32
+size = 28
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -46,17 +66,7 @@ shader_param/color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 72
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="StyleBoxEmpty" id=9]
+font_data = ExtResource( 10 )
 
 [node name="Home" type="Control"]
 anchor_right = 1.0
@@ -74,17 +84,17 @@ margin_bottom = -1.8877
 color = Color( 0, 0, 0, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.02
+anchor_left = 0.05
 anchor_top = 0.05
-anchor_right = 0.98
+anchor_right = 0.95
 anchor_bottom = 0.95
-custom_constants/separation = 150
+custom_constants/separation = 120
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_top = 9.0
-margin_right = 691.0
-margin_bottom = 153.0
+margin_top = 46.0
+margin_right = 560.0
+margin_bottom = 142.0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 11 )
@@ -92,19 +102,24 @@ text = "Qubes"
 align = 1
 valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 303.0
-margin_right = 691.0
-margin_bottom = 349.0
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 262.0
+margin_right = 560.0
+margin_bottom = 387.0
+custom_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 560.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 custom_constants/separation = 25
 alignment = 1
 
-[node name="PackLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 84.0
-margin_right = 210.0
-margin_bottom = 46.0
+[node name="PackLabel" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 40.0
+margin_right = 150.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 14 )
@@ -112,10 +127,10 @@ text = "Classic "
 align = 1
 valign = 1
 
-[node name="Dash" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 235.0
-margin_right = 254.0
-margin_bottom = 46.0
+[node name="Dash" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 175.0
+margin_right = 191.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 14 )
@@ -123,10 +138,10 @@ text = "-"
 align = 1
 valign = 1
 
-[node name="DifficultyLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 279.0
-margin_right = 469.0
-margin_bottom = 46.0
+[node name="DifficultyLabel" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 216.0
+margin_right = 388.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 15 )
@@ -135,10 +150,10 @@ text = "Introduction"
 align = 1
 valign = 1
 
-[node name="Dash2" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 494.0
-margin_right = 512.0
-margin_bottom = 46.0
+[node name="Dash2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 413.0
+margin_right = 429.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 15 )
@@ -147,10 +162,10 @@ text = "-"
 align = 1
 valign = 1
 
-[node name="PuzzleLevel" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 537.0
-margin_right = 607.0
-margin_bottom = 46.0
+[node name="PuzzleLevel" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 454.0
+margin_right = 520.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 16 )
@@ -158,19 +173,33 @@ text = "1/100"
 align = 1
 valign = 1
 
+[node name="LevelSelectBtn" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_left = 158.0
+margin_top = 70.0
+margin_right = 401.0
+margin_bottom = 125.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 18 )
+text = "Change level"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 499.0
-margin_right = 691.0
-margin_bottom = 899.0
+margin_top = 507.0
+margin_right = 560.0
+margin_bottom = 807.0
 custom_constants/separation = 80
 alignment = 1
 
 [node name="Previous" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
 material = SubResource( 13 )
-margin_left = 15.0
-margin_top = 175.0
-margin_right = 65.0
-margin_bottom = 225.0
+margin_top = 125.0
+margin_right = 50.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 18, 32 )
 size_flags_horizontal = 0
@@ -185,11 +214,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 145.0
+margin_left = 130.0
 margin_top = 0.0
-margin_right = 545.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 400, 400 )
+margin_right = 430.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 300, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 4
 columns = 4
@@ -202,10 +231,10 @@ anchor_bottom = 1.0
 
 [node name="Next" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
 material = SubResource( 13 )
-margin_left = 625.0
-margin_top = 175.0
-margin_right = 675.0
-margin_bottom = 225.0
+margin_left = 510.0
+margin_top = 125.0
+margin_right = 560.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -214,20 +243,26 @@ expand = true
 stretch_mode = 6
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-margin_top = 1049.0
-margin_right = 691.0
-margin_bottom = 1142.0
+margin_left = 180.0
+margin_top = 927.0
+margin_right = 380.0
+margin_bottom = 1033.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 10 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 18 )
+custom_styles/normal = SubResource( 18 )
 text = "Play"
 
 [node name="LevelSelect" parent="." instance=ExtResource( 8 )]
 visible = false
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/LevelSelectBtn" to="." method="_on_LevelSelectBtn_pressed"]

@@ -10,6 +10,7 @@ onready var restart:TextureButton = $Restart
 onready var home:TextureButton = $Home
 onready var level_cleared_container:Control = $LevelClearedContainer
 onready var lvl_solved_popup:Panel = $LevelClearedContainer/Popup
+onready var shop = $Shop
 
 var time_elapsed = 0
 
@@ -82,37 +83,8 @@ func _generate_puzzle(puzzle:Dictionary) -> void:
 	LevelGenerator.generate_puzzle(grid, Puzzle.pack, puzzle)
 	grid.call_deferred("adjust_board_size")
 
-func save_game():
-	return
-	#	var file = File.new()
-	#	file.open(score_file, File.WRITE)
-	#	file.store_var(highscore)
-	#	file.close()
+func _on_BgBtn_pressed():
+	shop.hide()
 
-#func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
-#	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
-#		num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
-#
-#	var excluding = [grid.get_moveable_rect_id()]
-#	var excluding_icons = []
-#	for i in num_of_different_connection_rects:
-#		var rnd_rect_icon = Utils.generate_random_int_excluding(0, Global.total_number_of_diff_connection_rects - 1, excluding_icons)
-#
-#		var used_colors = []
-#
-#		var counter:int = 0
-#
-#		while counter < num_of_pairs:
-#			var rnd_rect_id = Utils.generate_random_int_excluding(0, grid.total_num_of_grid_rects - 1, excluding)
-#			var grid_rect:ColoredGridRect = grid.grid_container.get_child(rnd_rect_id)
-#
-#			if grid_rect.get_rect_color() in used_colors:
-#				continue
-#
-#			var rnd_tex = Global.current_theme.connection_rects_icons[rnd_rect_icon]
-#			grid_rect.set_texture(rnd_tex)
-#			excluding.append(rnd_rect_id)
-#			used_colors.append(grid_rect.color)
-#			counter += 1
-#
-#		excluding_icons.append(rnd_rect_icon)
+func _on_ShopButton_pressed():
+	shop.show()

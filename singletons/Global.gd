@@ -68,6 +68,8 @@ func level_finished():
 	save_game()
 
 func get_levels_array_from_game_data():
+	if game_data.empty():
+		return []
 	return game_data[str(Puzzle.pack)][str(Puzzle.difficulty)]
 
 func initiate_switch_grid_rects() -> void:

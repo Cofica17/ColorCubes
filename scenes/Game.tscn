@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/Grid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/bug.png" type="Texture" id=2]
+[ext_resource path="res://assets/shopping-cart.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://assets/themes/desert/tex/desert_bg.png" type="Texture" id=4]
 [ext_resource path="res://assets/restart.png" type="Texture" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/fonts/quicksand/Quicksand-Medium.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scripts/Popup.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
@@ -43,6 +44,33 @@ void fragment()
 shader = SubResource( 12 )
 shader_param/color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 6
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+
+[sub_resource type="DynamicFont" id=16]
+size = 26
+font_data = ExtResource( 8 )
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
+
 [node name="Game" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,7 +103,7 @@ margin_bottom = -6.10352e-05
 custom_constants/separation = 17
 
 [node name="Pack" type="Label" parent="VBoxContainer"]
-margin_right = 431.0
+margin_right = 359.0
 margin_bottom = 74.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -84,7 +112,7 @@ align = 1
 
 [node name="Difficulty" type="Label" parent="VBoxContainer"]
 margin_top = 91.0
-margin_right = 431.0
+margin_right = 359.0
 margin_bottom = 138.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -94,7 +122,7 @@ align = 1
 
 [node name="Level" type="Label" parent="VBoxContainer"]
 margin_top = 155.0
-margin_right = 431.0
+margin_right = 359.0
 margin_bottom = 202.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -103,8 +131,9 @@ text = "Level 23"
 align = 1
 
 [node name="TimeElapsed" type="Label" parent="VBoxContainer"]
+visible = false
 margin_top = 219.0
-margin_right = 431.0
+margin_right = 359.0
 margin_bottom = 272.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -144,11 +173,8 @@ rect_pivot_offset = Vector2( 26.4371, 29.6078 )
 texture_normal = ExtResource( 6 )
 expand = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="ShopButton" type="TextureButton" parent="."]
 material = SubResource( 13 )
 anchor_left = 0.7
 anchor_top = 0.85
@@ -162,9 +188,6 @@ rect_pivot_offset = Vector2( 26.4371, 29.6078 )
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0
@@ -198,3 +221,47 @@ anchor_right = 0.9
 anchor_bottom = 0.6
 margin_top = 0.561249
 margin_bottom = 0.561279
+
+[node name="Shop" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LevelClearedBackground" type="ColorRect" parent="Shop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.807843 )
+
+[node name="Popup" type="Panel" parent="Shop"]
+anchor_left = 0.1
+anchor_top = 0.35
+anchor_right = 0.9
+anchor_bottom = 0.6
+margin_top = 0.561249
+margin_bottom = 0.561279
+custom_styles/panel = SubResource( 15 )
+script = ExtResource( 11 )
+
+[node name="PackLabel" type="Label" parent="Shop/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 16 )
+text = "Place to support the game and buy more levels and pack.
+
+Coming soon!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="BgBtn" type="Button" parent="Shop"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/disabled = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+
+[connection signal="pressed" from="ShopButton" to="." method="_on_ShopButton_pressed"]
+[connection signal="pressed" from="Shop/BgBtn" to="." method="_on_BgBtn_pressed"]
