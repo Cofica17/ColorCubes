@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/unchecked.png" type="Texture" id=1]
+[ext_resource path="res://assets/checkbox.png" type="Texture" id=2]
+[ext_resource path="res://scenes/settings/CheckBox.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=19]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 19 )
+shader_param/color = Color( 1, 1, 1, 1 )
+
+[node name="CheckBox" type="TextureButton"]
+material = SubResource( 13 )
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 3 )
+checked_tex = ExtResource( 2 )
+unchecked_tex = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_CheckBox_pressed"]

@@ -9,6 +9,7 @@ onready var grid_btn:Button = $VBoxContainer/HBoxContainer2/Grid/GridButton
 onready var level_select:Control = $LevelSelect
 onready var difficulty_label:Label = $VBoxContainer/VBoxContainer/HBoxContainer/DifficultyLabel
 onready var audio = $AudioStreamPlayer
+onready var settings = $Settings
 
 var current_level = 1 
 var max_levels = 100
@@ -98,30 +99,5 @@ func _process(delta):
 	if audio.get_playback_position() >= audio.stream.get_length() * 0.99:
 		audio.emit_signal("finished")
 
-#func _add_connection_rects(num_of_different_connection_rects:int, num_of_pairs:int) -> void:
-#	if num_of_different_connection_rects > Global.total_number_of_diff_connection_rects:
-#		num_of_different_connection_rects = Global.total_number_of_diff_connection_rects
-#
-#	var excluding = [grid.get_moveable_rect_id()]
-#	var excluding_icons = []
-#	for i in num_of_different_connection_rects:
-#		var rnd_rect_icon = Utils.generate_random_int_excluding(0, Global.total_number_of_diff_connection_rects - 1, excluding_icons)
-#
-#		var used_colors = []
-#
-#		var counter:int = 0
-#
-#		while counter < num_of_pairs:
-#			var rnd_rect_id = Utils.generate_random_int_excluding(0, grid.total_num_of_grid_rects - 1, excluding)
-#			var grid_rect:ColoredGridRect = grid.grid_container.get_child(rnd_rect_id)
-#
-#			if grid_rect.get_rect_color() in used_colors:
-#				continue
-#
-#			var rnd_tex = Global.current_theme.connection_rects_icons[rnd_rect_icon]
-#			grid_rect.set_texture(rnd_tex)
-#			excluding.append(rnd_rect_id)
-#			used_colors.append(grid_rect.color)
-#			counter += 1
-#
-#		excluding_icons.append(rnd_rect_icon)
+func _on_SettingsBtn_pressed():
+	settings.show()

@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/close.png" type="Texture" id=1]
+[ext_resource path="res://scenes/settings/SettingsScene.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/settings/CheckBox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=20]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Shader" id=19]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 19 )
+shader_param/color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 12 )
+shader_param/color = Color( 1, 1, 1, 1 )
+
+[node name="Settings" type="ColorRect" groups=["Settings"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.05
+anchor_top = 0.12
+anchor_right = 0.95
+anchor_bottom = 0.95
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 540.0
+margin_bottom = 50.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 2.0
+margin_right = 452.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 20 )
+text = "Enable sfx on moving cubes:"
+
+[node name="CheckBox" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 5 )]
+material = SubResource( 13 )
+margin_left = 472.0
+margin_right = 522.0
+
+[node name="CloseBtn" type="TextureButton" parent="."]
+material = SubResource( 21 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -106.0
+margin_top = 30.0
+margin_right = -36.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
+[connection signal="checked_changed" from="VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_CheckBox_checked_changed"]
+[connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]

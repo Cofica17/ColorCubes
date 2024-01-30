@@ -1,0 +1,415 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/close.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.94902, 0.372549, 0.360784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.537255, 0.54902, 0.533333, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.141176, 0.482353, 0.627451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.439216, 0.756863, 0.701961, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 shine_color : hint_color = vec4(1.0); //Shine color
+uniform float alpha_limit : hint_range(0.0, 1.0, 0.1) = 0.0; //Alpha color limit to apply the shine, for example, if you won't to apply the shine to semi-transparent pixels
+uniform float cycle_speed : hint_range(0.0, 10.0, 0.1) = 1.0; //Pulse cycle speed
+uniform bool full_pulse_cycle = false; //[False = Do the effect and make a pause] [True = Do the effect continuosly]
+uniform int mode : hint_range(0, 2, 1) = 0; //[0 = Always off] [1 = Pulse mode] [2 = Always on]
+
+void fragment()
+{
+	float cycle = sin(TIME * cycle_speed);
+	COLOR.rgb = mix(COLOR.rgb, shine_color.rgb, (((cycle >= 0.0) || (full_pulse_cycle)) ? abs(cycle) : 0.0) * shine_color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/shine_color = Color( 1, 1, 1, 0.537255 )
+shader_param/alpha_limit = 0.0
+shader_param/cycle_speed = 5.0
+shader_param/full_pulse_cycle = false
+shader_param/mode = 0
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.94902, 0.372549, 0.360784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.141176, 0.482353, 0.627451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.537255, 0.54902, 0.533333, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.439216, 0.756863, 0.701961, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment()
+{
+	vec4 cur_color = texture(TEXTURE, UV); // Read from texture again.
+	COLOR = color;
+	COLOR.a = cur_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
+shader_param/color = Color( 1, 1, 1, 1 )
+
+[node name="Tutorial" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.05
+anchor_top = 0.2
+anchor_right = 0.95
+anchor_bottom = 0.8
+
+[node name="FirstTip" type="VBoxContainer" parent="Panel"]
+visible = false
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/FirstTip"]
+margin_top = 52.0
+margin_right = 540.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 7 )
+text = "Press on a nearby cube to move it."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel/FirstTip"]
+margin_left = 120.0
+margin_top = 187.0
+margin_right = 420.0
+margin_bottom = 487.0
+rect_min_size = Vector2( 300, 300 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 3
+
+[node name="InsidePanel" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_right = 94.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="InsidePanel2" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_left = 104.0
+margin_right = 197.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="InsidePanel3" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_left = 207.0
+margin_right = 300.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel4" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_top = 104.0
+margin_right = 94.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="InsidePanel5" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_left = 104.0
+margin_top = 104.0
+margin_right = 197.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="InsidePanel6" type="Panel" parent="Panel/FirstTip/GridContainer"]
+material = SubResource( 2 )
+margin_left = 207.0
+margin_top = 104.0
+margin_right = 300.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="InsidePanel7" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_top = 207.0
+margin_right = 94.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="InsidePanel8" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_left = 104.0
+margin_top = 207.0
+margin_right = 197.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="InsidePanel9" type="Panel" parent="Panel/FirstTip/GridContainer"]
+margin_left = 207.0
+margin_top = 207.0
+margin_right = 300.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/FirstTip"]
+margin_top = 587.0
+margin_right = 540.0
+margin_bottom = 631.0
+alignment = 1
+
+[node name="NextBtn" type="Button" parent="Panel/FirstTip/HBoxContainer"]
+margin_left = 237.0
+margin_right = 303.0
+margin_bottom = 44.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Next"
+
+[node name="SecondTip" type="VBoxContainer" parent="Panel"]
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/SecondTip"]
+margin_top = 52.0
+margin_right = 540.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 7 )
+text = "Connect all colors to clear the level!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="GridContainer" type="GridContainer" parent="Panel/SecondTip"]
+margin_left = 120.0
+margin_top = 187.0
+margin_right = 420.0
+margin_bottom = 487.0
+rect_min_size = Vector2( 300, 300 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 3
+
+[node name="InsidePanel" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_right = 94.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="InsidePanel2" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 104.0
+margin_right = 197.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="InsidePanel3" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 207.0
+margin_right = 300.0
+margin_bottom = 94.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 14 )
+
+[node name="InsidePanel4" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_top = 104.0
+margin_right = 94.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="InsidePanel5" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 104.0
+margin_top = 104.0
+margin_right = 197.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 15 )
+
+[node name="InsidePanel6" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 207.0
+margin_top = 104.0
+margin_right = 300.0
+margin_bottom = 197.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 16 )
+
+[node name="InsidePanel7" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_top = 207.0
+margin_right = 94.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="InsidePanel8" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 104.0
+margin_top = 207.0
+margin_right = 197.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 6 )
+
+[node name="InsidePanel9" type="Panel" parent="Panel/SecondTip/GridContainer"]
+margin_left = 207.0
+margin_top = 207.0
+margin_right = 300.0
+margin_bottom = 300.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 17 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SecondTip"]
+margin_top = 587.0
+margin_right = 540.0
+margin_bottom = 631.0
+alignment = 1
+
+[node name="NextBtn" type="Button" parent="Panel/SecondTip/HBoxContainer"]
+margin_left = 228.0
+margin_right = 311.0
+margin_bottom = 44.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+text = "Close"
+
+[node name="CloseBtn" type="TextureButton" parent="Panel"]
+material = SubResource( 13 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -69.0
+margin_top = 2.0
+margin_right = 1.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5

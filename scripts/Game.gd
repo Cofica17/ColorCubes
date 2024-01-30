@@ -79,7 +79,9 @@ func _update_time_elapsed() -> void:
 
 func on_grid_rect_switched():
 	_check_solution()
-	switch_audio.play()
+	
+	if Settings.enable_sfx_on_rect_move:
+		switch_audio.play()
 
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):

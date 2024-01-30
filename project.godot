@@ -71,6 +71,7 @@ LevelsCreatorConfiguration="*res://levels_creator/LevelsCreatorConfiguration.gd"
 LevelGenerator="*res://level_generator/LevelGenerator.gd"
 Puzzle="*res://singletons/Puzzle.gd"
 Scenes="*res://singletons/Scenes.gd"
+Settings="*res://scenes/settings/Settings.gd"
 
 [debug]
 
