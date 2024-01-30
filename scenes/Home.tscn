@@ -14,24 +14,34 @@
 
 [sub_resource type="DynamicFont" id=11]
 size = 68
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 28
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=15]
 size = 28
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="DynamicFont" id=16]
 size = 28
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 36
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxFlat" id=18]
@@ -69,6 +79,8 @@ shader_param/color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 72
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 10 )
 
 [node name="Home" type="Control"]

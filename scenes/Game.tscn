@@ -17,14 +17,20 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 52
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 33
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 33
+use_mipmaps = true
+use_filter = true
 font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=3]

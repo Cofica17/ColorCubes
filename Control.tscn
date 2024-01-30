@@ -1,0 +1,1023 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/themes/desert/icons/cacstus.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/poppins/Poppins-BoldItalic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/ColoredGridRect.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+border_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0.498039 )
+border_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+anti_aliasing_size = 1.0
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.94902, 0.372549, 0.360784, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=9]
+size = 56
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.141176, 0.482353, 0.627451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.439216, 0.756863, 0.701961, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.952941, 0.905882, 0.466667, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.439216, 0.756863, 0.470588, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1399.0
+margin_right = 1594.0
+margin_bottom = 318.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2999.0
+margin_top = -1742.0
+margin_right = 3169.0
+margin_bottom = 1972.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 1438.0
+margin_top = 518.0
+margin_right = 1954.0
+margin_bottom = 618.0
+
+[node name="ColoredGridRect" type="Control" parent="HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColoredGridRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer/ColoredGridRect"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer/ColoredGridRect"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColoredGridRect"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/ColoredGridRect"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColoredGridRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "Q"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect2" type="Control" parent="HBoxContainer"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColoredGridRect2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer/ColoredGridRect2"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer/ColoredGridRect2"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 10 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColoredGridRect2"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/ColoredGridRect2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColoredGridRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "U"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect3" type="Control" parent="HBoxContainer"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColoredGridRect3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer/ColoredGridRect3"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer/ColoredGridRect3"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 11 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColoredGridRect3"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/ColoredGridRect3"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColoredGridRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "B"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect4" type="Control" parent="HBoxContainer"]
+margin_left = 312.0
+margin_right = 412.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColoredGridRect4"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer/ColoredGridRect4"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer/ColoredGridRect4"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColoredGridRect4"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/ColoredGridRect4"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColoredGridRect4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect5" type="Control" parent="HBoxContainer"]
+margin_left = 416.0
+margin_right = 516.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColoredGridRect5"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer/ColoredGridRect5"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer/ColoredGridRect5"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ColoredGridRect5"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/ColoredGridRect5"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColoredGridRect5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "S"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 1646.21
+margin_top = 310.16
+margin_right = 1746.21
+margin_bottom = 826.16
+
+[node name="ColoredGridRect" type="Control" parent="HBoxContainer2"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/ColoredGridRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer2/ColoredGridRect"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer2/ColoredGridRect"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/ColoredGridRect"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer2/ColoredGridRect"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/ColoredGridRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "Q"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect2" type="Control" parent="HBoxContainer2"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/ColoredGridRect2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer2/ColoredGridRect2"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer2/ColoredGridRect2"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 10 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/ColoredGridRect2"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer2/ColoredGridRect2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/ColoredGridRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "U"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect3" type="Control" parent="HBoxContainer2"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/ColoredGridRect3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer2/ColoredGridRect3"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer2/ColoredGridRect3"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 11 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/ColoredGridRect3"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer2/ColoredGridRect3"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/ColoredGridRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "B"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect4" type="Control" parent="HBoxContainer2"]
+margin_top = 312.0
+margin_right = 100.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/ColoredGridRect4"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer2/ColoredGridRect4"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer2/ColoredGridRect4"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/ColoredGridRect4"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer2/ColoredGridRect4"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/ColoredGridRect4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect5" type="Control" parent="HBoxContainer2"]
+margin_top = 416.0
+margin_right = 100.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/ColoredGridRect5"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer2/ColoredGridRect5"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer2/ColoredGridRect5"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/ColoredGridRect5"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer2/ColoredGridRect5"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer2/ColoredGridRect5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "S"
+align = 1
+valign = 1
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="."]
+margin_left = 1542.23
+margin_top = 413.643
+margin_right = 1642.23
+margin_bottom = 929.643
+
+[node name="ColoredGridRect" type="Control" parent="HBoxContainer3"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer3/ColoredGridRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer3/ColoredGridRect"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer3/ColoredGridRect"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/ColoredGridRect"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer3/ColoredGridRect"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/ColoredGridRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "Q"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect2" type="Control" parent="HBoxContainer3"]
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer3/ColoredGridRect2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer3/ColoredGridRect2"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer3/ColoredGridRect2"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 10 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/ColoredGridRect2"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer3/ColoredGridRect2"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/ColoredGridRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "U"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect3" type="Control" parent="HBoxContainer3"]
+margin_top = 208.0
+margin_right = 100.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer3/ColoredGridRect3"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer3/ColoredGridRect3"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer3/ColoredGridRect3"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 11 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/ColoredGridRect3"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer3/ColoredGridRect3"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/ColoredGridRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "B"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect4" type="Control" parent="HBoxContainer3"]
+margin_top = 312.0
+margin_right = 100.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer3/ColoredGridRect4"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer3/ColoredGridRect4"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer3/ColoredGridRect4"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/ColoredGridRect4"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer3/ColoredGridRect4"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/ColoredGridRect4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="ColoredGridRect5" type="Control" parent="HBoxContainer3"]
+margin_top = 416.0
+margin_right = 100.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer3/ColoredGridRect5"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExactSpace" type="Panel" parent="HBoxContainer3/ColoredGridRect5"]
+visible = false
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="InsidePanel" type="Panel" parent="HBoxContainer3/ColoredGridRect5"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+mouse_filter = 1
+custom_styles/panel = SubResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer3/ColoredGridRect5"]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer3/ColoredGridRect5"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="HBoxContainer3/ColoredGridRect5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 9 )
+text = "S"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="HBoxContainer/ColoredGridRect/Button" to="HBoxContainer/ColoredGridRect" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColoredGridRect2/Button" to="HBoxContainer/ColoredGridRect2" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColoredGridRect3/Button" to="HBoxContainer/ColoredGridRect3" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColoredGridRect4/Button" to="HBoxContainer/ColoredGridRect4" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColoredGridRect5/Button" to="HBoxContainer/ColoredGridRect5" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ColoredGridRect/Button" to="HBoxContainer2/ColoredGridRect" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ColoredGridRect2/Button" to="HBoxContainer2/ColoredGridRect2" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ColoredGridRect3/Button" to="HBoxContainer2/ColoredGridRect3" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ColoredGridRect4/Button" to="HBoxContainer2/ColoredGridRect4" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/ColoredGridRect5/Button" to="HBoxContainer2/ColoredGridRect5" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/ColoredGridRect/Button" to="HBoxContainer3/ColoredGridRect" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/ColoredGridRect2/Button" to="HBoxContainer3/ColoredGridRect2" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/ColoredGridRect3/Button" to="HBoxContainer3/ColoredGridRect3" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/ColoredGridRect4/Button" to="HBoxContainer3/ColoredGridRect4" method="_on_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/ColoredGridRect5/Button" to="HBoxContainer3/ColoredGridRect5" method="_on_Button_pressed"]
