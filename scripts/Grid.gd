@@ -31,9 +31,9 @@ func _on_switch_grid_rects(colored_grid_rect:ColoredGridRect) -> void:
 	
 	var dir
 	
-	if moveable_grid_rect.id == colored_grid_rect.id + 1:
+	if moveable_grid_rect.id == colored_grid_rect.id + 1 and moveable_grid_rect.row == colored_grid_rect.row:
 		dir = Global.DIRECTION.LEFT
-	elif moveable_grid_rect.id == colored_grid_rect.id - 1:
+	elif moveable_grid_rect.id == colored_grid_rect.id - 1 and moveable_grid_rect.row == colored_grid_rect.row:
 		dir = Global.DIRECTION.RIGHT
 	elif moveable_grid_rect.id == colored_grid_rect.id - columns:
 		dir = Global.DIRECTION.DOWN
