@@ -28,7 +28,7 @@ func _ready():
 	Global.current_theme = BoardThemes.classic
 	_set_puzzle_content()
 	fill_level_select()
-	difficulty_label.text = Levels.difficulty_level_names[Puzzle.difficulty].to_upper()
+	difficulty_label.text = Levels.difficulty_level_names[Puzzle.difficulty]
 	
 	Global.emit_signal("level_chosen", Global.game_data.level)
 

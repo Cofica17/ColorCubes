@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/close.png" type="Texture" id=1]
 [ext_resource path="res://scenes/settings/SettingsScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Medium.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scenes/settings/CheckBox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=20]
@@ -25,6 +26,27 @@ void fragment()
 shader = SubResource( 19 )
 shader_param/color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="DynamicFont" id=23]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="Shader" id=22]
 code = "shader_type canvas_item;
 
@@ -41,6 +63,20 @@ void fragment()
 shader = SubResource( 22 )
 shader_param/color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="DynamicFont" id=25]
+size = 24
+font_data = ExtResource( 4 )
+
 [node name="Settings" type="ColorRect" groups=["Settings"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +88,7 @@ anchor_left = 0.05
 anchor_top = 0.12
 anchor_right = 0.95
 anchor_bottom = 0.95
+custom_constants/separation = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 540.0
@@ -70,6 +107,26 @@ material = SubResource( 13 )
 margin_left = 472.0
 margin_right = 522.0
 
+[node name="Credits" type="Button" parent="VBoxContainer"]
+margin_left = 170.0
+margin_top = 100.0
+margin_right = 370.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 23 )
+custom_styles/hover = SubResource( 24 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 24 )
+text = "Credits"
+
 [node name="CloseBtn" type="TextureButton" parent="."]
 material = SubResource( 21 )
 anchor_left = 1.0
@@ -83,5 +140,86 @@ texture_normal = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 
+[node name="Credits" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.537255 )
+
+[node name="CloseBtn2" type="Button" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/hover = SubResource( 26 )
+custom_styles/pressed = SubResource( 27 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/disabled = SubResource( 29 )
+custom_styles/normal = SubResource( 30 )
+
+[node name="ColorRect" type="ColorRect" parent="Credits"]
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.8
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="RichTextLabel" parent="Credits/ColorRect"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = SubResource( 25 )
+text = "Memories of Spring by Tokyo Music Walker | https://soundcloud.com/user-356546060
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+Colorful Flowers by Tokyo Music Walker | https://soundcloud.com/user-356546060
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+Way Home by Tokyo Music Walker | https://soundcloud.com/user-356546060
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+Morning Station by Tokyo Music Walker | https://soundcloud.com/user-356546060
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+When I Was A Boy by Tokyo Music Walker | https://soundcloud.com/user-356546060
+Music promoted by https://www.chosic.com/free-music/all/
+Creative Commons CC BY 3.0
+https://creativecommons.org/licenses/by/3.0/
+
+218107__mastersdisaster__switch-off-bedlight by MastersDisaster
+https://freesound.org/people/MastersDisaster/sounds/218107/
+Creative Commons CC BY 4.0
+https://creativecommons.org/licenses/by/4.0
+
+star icon: \"https://www.flaticon.com/free-icons/star\" by Freepik
+settings icon: \"https://www.flaticon.com/free-icons/gear\" by Freepik
+store icon : \"https://www.flaticon.com/free-icons/smart-cart\" by Freepik
+unchecked icon: \"https://www.flaticon.com/free-icons/checkbox\" by Rahul Kaklotar
+checked icon: \"https://www.flaticon.com/free-icons/checkbox\" by inkubators
+close icon: \"https://www.flaticon.com/free-icons/close\" by inkubators"
+
+[node name="CloseBtn" type="TextureButton" parent="Credits/ColorRect"]
+material = SubResource( 21 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -76.0
+margin_top = -18.0
+margin_right = -6.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 70, 70 )
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+
 [connection signal="checked_changed" from="VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_CheckBox_checked_changed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CloseBtn" to="." method="_on_CloseBtn_pressed"]
+[connection signal="pressed" from="Credits/CloseBtn2" to="." method="_on_CloseBtn2_pressed"]
+[connection signal="pressed" from="Credits/ColorRect/CloseBtn" to="." method="_on_CloseBtn2_pressed"]

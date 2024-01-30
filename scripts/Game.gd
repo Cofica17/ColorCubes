@@ -12,7 +12,7 @@ onready var lvl_solved_popup:Panel = $LevelClearedContainer/Popup
 onready var shop = $Shop
 onready var audio = $AudioStreamPlayer
 onready var switch_audio = $AudioStreamPlayer2
-onready var star_particles = $LevelClearedContainer/StarParticles
+onready var star_particles = $LevelClearedContainer/Popup/StarParticles
 onready var tutorial = $Tutorial
 
 var time_elapsed = 0

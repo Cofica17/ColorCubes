@@ -1,10 +1,11 @@
 extends Control
 
 onready var tween:Tween = $Tween
+onready var star_particles = $Popup/StarParticles
 
 func show():
-	$StarParticles.restart()
-	$StarParticles.emitting = false
+	star_particles.restart()
+	star_particles.emitting = false
 	$Popup.modulate.a = 0.0
 	modulate.a = 0.0
 	var start_pos = $Popup.rect_position
@@ -16,4 +17,4 @@ func show():
 
 
 func _on_Tween_tween_all_completed():
-	$StarParticles.emitting = true
+	star_particles.emitting = true
