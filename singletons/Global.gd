@@ -75,6 +75,7 @@ func load_game():
 			Levels.PACKS.CLASSIC: default_pack_dict(),
 			"difficulty" : 0,
 			"level" : 1,
+			"tutorial_completed" : false
 		}
 		save_game()
 

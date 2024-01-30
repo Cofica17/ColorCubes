@@ -13,6 +13,7 @@ onready var shop = $Shop
 onready var audio = $AudioStreamPlayer
 onready var switch_audio = $AudioStreamPlayer2
 onready var star_particles = $LevelClearedContainer/StarParticles
+onready var tutorial = $Tutorial
 
 var time_elapsed = 0
 
@@ -30,6 +31,8 @@ func _ready():
 	lvl_solved_popup.connect("next_level_pressed", self, "_on_next_level_pressed")
 	lvl_solved_popup.connect("home_pressed", self, "_on_home_pressed")
 	lvl_solved_popup.connect("restart_pressed", self, "_on_restart_pressed")
+	if not Global.game_data.tutorial_completed:
+		tutorial.show()
 
 func _process(delta):
 	if audio.get_playback_position() >= audio.stream.get_length() * 0.99:
@@ -85,7 +88,6 @@ func on_grid_rect_switched():
 
 func _check_solution() -> void:
 	if CheckSolution.is_grid_solved(grid):
-		yield(get_tree().create_timer(0.3), "timeout")
 		level_cleared_container.show()
 		$Timer.stop()
 		
@@ -93,8 +95,6 @@ func _check_solution() -> void:
 			$LevelClearedContainer/Popup/Next.hide()
 		
 		Global.level_finished()
-		star_particles.restart()
-		star_particles.emitting = true
 		Global.game_data.level = min(Puzzle.level + 1, 100)
 		Global.save_game()
 

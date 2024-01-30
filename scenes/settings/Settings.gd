@@ -26,7 +26,7 @@ func save_settings():
 	settings = {
 			"enable_sfx_on_rect_move" : enable_sfx_on_rect_move
 	}
-	print(settings)
+	
 	var new_file = File.new()
 	new_file.open("user://settings.json", File.WRITE)
 	new_file.store_string(to_json(settings))

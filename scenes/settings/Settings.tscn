@@ -25,7 +25,7 @@ void fragment()
 shader = SubResource( 19 )
 shader_param/color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=22]
 code = "shader_type canvas_item;
 
 uniform vec4 color : hint_color;
@@ -38,7 +38,7 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=21]
-shader = SubResource( 12 )
+shader = SubResource( 22 )
 shader_param/color = Color( 1, 1, 1, 1 )
 
 [node name="Settings" type="ColorRect" groups=["Settings"]]

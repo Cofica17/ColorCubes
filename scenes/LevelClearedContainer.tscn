@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/star.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/LevelClearedContainer.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=22]
+max_value = 30.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.292079, 30 ), 0.0, 0.0, 0, 0, Vector2( 0.490099, 13.1591 ), 0.0, 0.0, 0, 0, Vector2( 0.767327, 30 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=23]
+max_value = 1.5
+_data = [ Vector2( 0, 0.209091 ), 0.0, 0.0, 0, 0, Vector2( 0.985149, 1.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=24]
+offsets = PoolRealArray( 0.00558659, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.698039, 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 6
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+
+[node name="LevelClearedContainer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="LevelClearedBackground" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.807843 )
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 296, 452 )
+emitting = false
+amount = 15
+lifetime = 6.0
+explosiveness = 0.55
+randomness = 1.0
+texture = ExtResource( 1 )
+direction = Vector2( 0, -1 )
+spread = 30.0
+gravity = Vector2( 0, 150 )
+initial_velocity = 300.0
+initial_velocity_random = 0.34
+angle = 10.0
+angle_random = 1.0
+angle_curve = SubResource( 22 )
+scale_amount = 0.2
+scale_amount_curve = SubResource( 23 )
+color_ramp = SubResource( 24 )
+
+[node name="Popup" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.1
+anchor_top = 0.35
+anchor_right = 0.9
+anchor_bottom = 0.6
+margin_top = 0.561249
+margin_bottom = 0.561279
+custom_styles/panel = SubResource( 15 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
