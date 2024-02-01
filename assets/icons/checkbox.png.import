@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shopping-cart.png-170332be5bbb0e77e87c8a9b5c84b447.stex"
+path="res://.import/checkbox.png-a54e0b0aac11afdfba807c2fe5b87d83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shopping-cart.png"
-dest_files=[ "res://.import/shopping-cart.png-170332be5bbb0e77e87c8a9b5c84b447.stex" ]
+source_file="res://assets/icons/checkbox.png"
+dest_files=[ "res://.import/checkbox.png-a54e0b0aac11afdfba807c2fe5b87d83.stex" ]
 
 [params]
 

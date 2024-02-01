@@ -58,9 +58,9 @@ _global_script_class_icons={
 
 config/name="Qubes"
 run/main_scene="res://scenes/Home.tscn"
-boot_splash/image="res://Snimka zaslona 2024-01-30 165412.png"
+boot_splash/image="res://assets/identity/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://Snimka zaslona 2024-01-30 161758.png"
+config/icon="res://assets/identity/Snimka zaslona 2024-02-01 101814 (1) (1).png"
 
 [autoload]
 
@@ -83,8 +83,8 @@ settings/physics_interpolation/enable_warnings=false
 
 window/size/width=600
 window/size/height=1200
-window/size/test_width=1800
-window/size/test_height=900
+window/size/test_width=1024
+window/size/test_height=500
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"

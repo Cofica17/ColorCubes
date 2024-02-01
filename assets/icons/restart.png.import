@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/close.png-5dfda58792925f4ecef1b7dd0e814906.stex"
+path="res://.import/restart.png-93bdf0e11b523f5971b8e30646a3ada0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/close.png"
-dest_files=[ "res://.import/close.png-5dfda58792925f4ecef1b7dd0e814906.stex" ]
+source_file="res://assets/icons/restart.png"
+dest_files=[ "res://.import/restart.png-93bdf0e11b523f5971b8e30646a3ada0.stex" ]
 
 [params]
 

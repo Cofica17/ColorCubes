@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Snimka zaslona 2024-01-30 165412.png-c85d9317b8139b50c285060cad5eb2f1.stex"
+path="res://.import/star.png-2e8a8be320498e4bbe97387665811236.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Snimka zaslona 2024-01-30 165412.png"
-dest_files=[ "res://.import/Snimka zaslona 2024-01-30 165412.png-c85d9317b8139b50c285060cad5eb2f1.stex" ]
+source_file="res://assets/icons/star.png"
+dest_files=[ "res://.import/star.png-2e8a8be320498e4bbe97387665811236.stex" ]
 
 [params]
 

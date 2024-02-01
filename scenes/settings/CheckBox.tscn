@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/unchecked.png" type="Texture" id=1]
-[ext_resource path="res://assets/checkbox.png" type="Texture" id=2]
+[ext_resource path="res://assets/icons/unchecked.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/checkbox.png" type="Texture" id=2]
 [ext_resource path="res://scenes/settings/CheckBox.gd" type="Script" id=3]
+
 
 [sub_resource type="Shader" id=19]
 code = "shader_type canvas_item;

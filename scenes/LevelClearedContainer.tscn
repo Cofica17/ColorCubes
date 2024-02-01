@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/star.png" type="Texture" id=1]
+[ext_resource path="res://assets/icons/star.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/LevelClearedContainer.gd" type="Script" id=3]
 

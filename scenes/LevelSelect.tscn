@@ -5,7 +5,8 @@
 [ext_resource path="res://scripts/LevelSelect.gd" type="Script" id=3]
 [ext_resource path="res://assets/fonts/poppins/Poppins-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scenes/DifficultyPopup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/close.png" type="Texture" id=6]
+[ext_resource path="res://assets/icons/close.png" type="Texture" id=6]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )

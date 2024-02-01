@@ -2,6 +2,8 @@ extends ColorRect
 
 onready var enable_sfx_checkbox = $VBoxContainer/HBoxContainer/CheckBox
 onready var credits = $Credits
+onready var privacy_policy = $PrivacyPolicy
+onready var terms_conditions = $TermsConditions
 
 func _ready():
 	Settings.load_settings()
@@ -22,3 +24,19 @@ func _on_CloseBtn2_pressed():
 
 func _on_Credits_pressed():
 	credits.show()
+
+
+func _on_PrivacyPolicy_pressed():
+	privacy_policy.show()
+
+
+func _on_CloseBtn3_pressed():
+	privacy_policy.hide()
+
+
+func _on_TermsConditions_pressed():
+	terms_conditions.show()
+
+
+func _on_CloseBtn4_pressed():
+	terms_conditions.hide()
